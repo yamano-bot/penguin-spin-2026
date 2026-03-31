@@ -176,12 +176,12 @@ html, body { height: 100%; overflow: hidden; font-family: 'Noto Sans JP', sans-s
 .prize-grid { display: grid; grid-template-columns: 1fr; gap: 0.8rem; margin-top: 1.5rem; }
 .prize-card { display: flex; align-items: center; gap: 1.2rem; padding: 1.2rem 1.4rem; border: 3px solid var(--k); box-shadow: 5px 5px 0 var(--k); background: var(--w); transition: transform 0.15s; }
 .prize-card:hover { transform: translate(-2px,-2px); }
-.prize-card.gold   { background: var(--k); padding: 1.8rem 1.6rem; }
+.prize-card.gold   { background: var(--w); border-color: var(--y); box-shadow: 5px 5px 0 var(--y); padding: 1.6rem 1.6rem; }
 .prize-card.silver { background: #e8e8e8; }
 .prize-card.bronze { background: #f5e6d3; }
-.prize-card.gold .prize-title { color: var(--y); letter-spacing: 0.2em; font-size: 0.72rem; }
-.prize-card.gold .prize-amount { color: var(--y); font-size: 3rem; }
-.prize-card.gold .prize-rank { color: var(--y); font-size: 3.2rem; }
+.prize-card.gold .prize-title { color: rgba(0,0,0,0.5); letter-spacing: 0.2em; font-size: 0.72rem; }
+.prize-card.gold .prize-amount { color: var(--r); font-size: 3rem; }
+.prize-card.gold .prize-rank { color: var(--k); font-size: 3.2rem; }
 .prize-rank { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; line-height: 1; color: var(--k); flex-shrink: 0; width: 60px; font-style: italic; }
 .prize-title { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; color: rgba(0,0,0,0.5); margin-bottom: 0.2rem; }
 .prize-amount { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--r); line-height: 1; }
@@ -189,15 +189,15 @@ html, body { height: 100%; overflow: hidden; font-family: 'Noto Sans JP', sans-s
 .prize-sub { font-size: 0.65rem; color: rgba(0,0,0,0.5); margin-top: 0.3rem; line-height: 1.6; }
 
 /* AWARD CARDS */
-.award-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
-.award-card { border: 3px solid var(--k); background: var(--w); box-shadow: 5px 5px 0 var(--k); overflow: hidden; transition: transform 0.15s; }
+.award-grid { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1.5rem; }
+.award-card { display: flex; flex-direction: row; border: 3px solid var(--k); background: var(--w); box-shadow: 5px 5px 0 var(--k); overflow: hidden; transition: transform 0.15s; }
 .award-card:hover { transform: translate(-2px,-2px); }
-.award-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; border-bottom: 3px solid var(--k); background: var(--c); }
-.award-body { padding: 1rem 1rem 1.2rem; }
+.award-img { width: 120px; min-width: 120px; height: 120px; object-fit: cover; display: block; border-right: 3px solid var(--k); background: var(--c); flex-shrink: 0; }
+.award-body { padding: 0.9rem 1rem; display: flex; flex-direction: column; justify-content: center; }
 .award-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 0.04em; color: var(--k); margin-bottom: 0.3rem; }
-.award-desc { font-size: 0.72rem; color: rgba(0,0,0,0.6); line-height: 1.6; margin-bottom: 0.6rem; }
-.award-amt  { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--r); line-height: 1; }
-.award-amt-note { font-size: 0.58rem; color: rgba(0,0,0,0.4); font-weight: 700; letter-spacing: 0.1em; margin-top: 0.1rem; }
+.award-desc { font-size: 0.72rem; color: rgba(0,0,0,0.6); line-height: 1.6; margin-bottom: 0.5rem; }
+.award-amt  { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; color: var(--r); line-height: 1; }
+.award-amt-note { font-size: 0.58rem; color: rgba(0,0,0,0.4); font-weight: 700; letter-spacing: 0.1em; margin-top: 0.15rem; }
 
 /* CRITERIA */
 .crit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
@@ -229,15 +229,16 @@ html, body { height: 100%; overflow: hidden; font-family: 'Noto Sans JP', sans-s
 
 /* SCHEDULE */
 .tl-wrap { margin-top: 2rem; }
-.tl-item { display: flex; align-items: flex-start; padding-bottom: 2.2rem; position: relative; }
-.tl-item::before { content: ''; position: absolute; left: 96px; top: 18px; bottom: 0; width: 3px; background: var(--k); }
-.tl-item:last-child::before { display: none; }
-.tl-date { font-family: 'Bebas Neue', sans-serif; font-size: 0.82rem; color: var(--k); width: 96px; text-align: right; flex-shrink: 0; line-height: 1.3; padding-right: 4px; }
-.tl-dot { width: 14px; height: 14px; background: var(--k); position: absolute; left: 89px; top: 4px; transform: rotate(45deg); flex-shrink: 0; }
-.tl-item.active .tl-dot { background: var(--r); border: 2px solid var(--k); }
-.tl-right { padding-left: 36px; }
-.tl-title { font-size: 1rem; font-weight: 900; margin-bottom: 0.2rem; color: var(--k); }
-.tl-desc { font-size: 0.78rem; color: rgba(0,0,0,0.55); line-height: 1.5; }
+.tl-item { display: grid; grid-template-columns: 80px 24px 1fr; align-items: start; padding-bottom: 2.4rem; }
+.tl-date { font-family: 'Bebas Neue', sans-serif; font-size: 0.85rem; color: var(--k); text-align: right; padding-right: 8px; padding-top: 3px; line-height: 1.25; }
+.tl-dot-col { display: flex; flex-direction: column; align-items: center; }
+.tl-dot { width: 13px; height: 13px; background: var(--k); transform: rotate(45deg); flex-shrink: 0; }
+.tl-item.active .tl-dot { background: var(--r); outline: 2px solid var(--k); outline-offset: 1px; }
+.tl-line { flex: 1; width: 2px; background: var(--k); min-height: calc(2.4rem + 4px); margin-top: 2px; }
+.tl-item:last-child .tl-line { display: none; }
+.tl-right { padding-left: 10px; }
+.tl-title { font-size: 0.95rem; font-weight: 900; margin-bottom: 0.2rem; color: var(--k); }
+.tl-desc { font-size: 0.75rem; color: rgba(0,0,0,0.55); line-height: 1.5; }
 
 /* PEOPLE IMAGES */
 .people-img { position: absolute; bottom: 0; pointer-events: none; z-index: 1; }
@@ -787,8 +788,8 @@ footer { background: var(--k); border-top: 4px solid var(--y); padding: 2rem 2.5
     <h2 class="sec-heading char-heading reveal">審査員</h2>
     <div class="judges-grid">
       <div class="judge-card reveal fly-l">
-        <div class="judge-avatar">K</div>
-        <div><div class="judge-name">KAY</div><div class="judge-role">PEN SPINNER</div></div>
+        <div class="judge-avatar">？</div>
+        <div><div class="judge-name">TBA</div><div class="judge-role">TBA</div></div>
       </div>
       <div class="judge-card reveal fly-r">
         <div class="judge-avatar">？</div>
@@ -810,22 +811,22 @@ footer { background: var(--k); border-top: 4px solid var(--y); padding: 2rem 2.5
     <div class="tl-wrap">
       <div class="tl-item active reveal fly-l">
         <div class="tl-date">4.16</div>
-        <div class="tl-dot"></div>
+        <div class="tl-dot-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
         <div class="tl-right"><div class="tl-title">エントリー受付開始</div><div class="tl-desc">X（Twitter）にてハッシュタグ付きで投稿</div></div>
       </div>
       <div class="tl-item reveal fly-r">
         <div class="tl-date">5.11</div>
-        <div class="tl-dot"></div>
+        <div class="tl-dot-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
         <div class="tl-right"><div class="tl-title">動画提出締め切り</div><div class="tl-desc">30秒以内の新規撮影動画を提出（約4週間）</div></div>
       </div>
       <div class="tl-item reveal fly-l">
-        <div class="tl-date">5.12<br>–5.18</div>
-        <div class="tl-dot"></div>
+        <div class="tl-date">5.12–<br>5.18</div>
+        <div class="tl-dot-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
         <div class="tl-right"><div class="tl-title">審査期間</div><div class="tl-desc">審査員3名による総合評価（1週間）</div></div>
       </div>
       <div class="tl-item reveal fly-r">
         <div class="tl-date">5.19</div>
-        <div class="tl-dot"></div>
+        <div class="tl-dot-col"><div class="tl-dot"></div></div>
         <div class="tl-right"><div class="tl-title">結果発表</div><div class="tl-desc">X・特設サイトにて上位10名を発表</div></div>
       </div>
     </div>
