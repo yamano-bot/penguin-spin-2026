@@ -189,14 +189,14 @@ html, body { height: 100%; overflow: hidden; font-family: 'Noto Sans JP', sans-s
 .prize-sub { font-size: 0.65rem; color: rgba(0,0,0,0.5); margin-top: 0.3rem; line-height: 1.6; }
 
 /* AWARD CARDS */
-.award-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
-.award-card { display: flex; flex-direction: column; border: 3px solid var(--k); background: var(--w); box-shadow: 5px 5px 0 var(--k); overflow: hidden; transition: transform 0.15s; }
+.award-grid { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1.5rem; }
+.award-card { display: flex; flex-direction: row; border: 3px solid var(--k); background: var(--w); box-shadow: 5px 5px 0 var(--k); overflow: hidden; transition: transform 0.15s; }
 .award-card:hover { transform: translate(-2px,-2px); }
-.award-img { width: 100%; height: 140px; object-fit: cover; object-position: center top; display: block; border-bottom: 3px solid var(--k); background: var(--c); }
-.award-body { padding: 0.8rem 0.9rem 1rem; display: flex; flex-direction: column; }
-.award-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.04em; color: var(--k); margin-bottom: 0.3rem; }
-.award-desc { font-size: 0.68rem; color: rgba(0,0,0,0.6); line-height: 1.6; margin-bottom: 0.5rem; flex: 1; }
-.award-amt  { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--r); line-height: 1; }
+.award-img { width: 130px; min-width: 130px; height: 130px; object-fit: cover; object-position: center; display: block; border-right: 3px solid var(--k); background: var(--c); flex-shrink: 0; }
+.award-body { padding: 1rem 1.2rem; display: flex; flex-direction: column; justify-content: center; flex: 1; }
+.award-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 0.04em; color: var(--k); margin-bottom: 0.3rem; }
+.award-desc { font-size: 0.72rem; color: rgba(0,0,0,0.6); line-height: 1.6; margin-bottom: 0.5rem; }
+.award-amt  { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; color: var(--r); line-height: 1; }
 .award-amt-note { font-size: 0.55rem; color: rgba(0,0,0,0.4); font-weight: 700; letter-spacing: 0.1em; margin-top: 0.15rem; }
 
 /* JUDGES COMING SOON */
@@ -702,7 +702,6 @@ footer { background: var(--k); border-top: 4px solid var(--y); padding: 2rem 2.5
     </div>
     <p class="sec-eyebrow reveal stamp">03 — CRITERIA</p>
     <h2 class="sec-heading char-heading reveal">評価基準</h2>
-    <p class="reveal fly-r" style="font-size:0.82rem;color:rgba(0,0,0,0.55);margin-bottom:1.5rem;position:relative;z-index:2;">賞によってかなり違いますが、ベーシックなものを紹介します。</p>
     <div class="crit-grid" style="position:relative;z-index:2;">
       <div class="crit-item reveal zoom">
         <div class="crit-num">01</div>
@@ -763,7 +762,7 @@ footer { background: var(--k); border-top: 4px solid var(--y); padding: 2rem 2.5
          data-height="420"
          data-theme="light"
          data-chrome="noheader nofooter noborders"
-         href="https://twitter.com/PENguin_ainet">
+         href="https://x.com/PENguin_ainet">
         <div style="padding:2rem;text-align:center;font-size:0.85rem;color:rgba(0,0,0,0.5);">X タイムラインを読み込み中…<br><a href="https://x.com/PENguin_ainet" target="_blank" style="color:var(--c);font-weight:700;">x.com/PENguin_ainet</a></div>
       </a>
     </div>
