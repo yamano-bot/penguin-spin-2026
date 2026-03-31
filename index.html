@@ -176,12 +176,28 @@ html, body { height: 100%; overflow: hidden; font-family: 'Noto Sans JP', sans-s
 .prize-grid { display: grid; grid-template-columns: 1fr; gap: 0.8rem; margin-top: 1.5rem; }
 .prize-card { display: flex; align-items: center; gap: 1.2rem; padding: 1.2rem 1.4rem; border: 3px solid var(--k); box-shadow: 5px 5px 0 var(--k); background: var(--w); transition: transform 0.15s; }
 .prize-card:hover { transform: translate(-2px,-2px); }
-.prize-card.gold   { background: var(--y); }
+.prize-card.gold   { background: var(--k); padding: 1.8rem 1.6rem; }
 .prize-card.silver { background: #e8e8e8; }
 .prize-card.bronze { background: #f5e6d3; }
+.prize-card.gold .prize-title { color: var(--y); letter-spacing: 0.2em; font-size: 0.72rem; }
+.prize-card.gold .prize-amount { color: var(--y); font-size: 3rem; }
+.prize-card.gold .prize-rank { color: var(--y); font-size: 3.2rem; }
 .prize-rank { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; line-height: 1; color: var(--k); flex-shrink: 0; width: 60px; font-style: italic; }
 .prize-title { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; color: rgba(0,0,0,0.5); margin-bottom: 0.2rem; }
 .prize-amount { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--r); line-height: 1; }
+.prize-badge { display: inline-block; font-size: 0.6rem; font-weight: 900; letter-spacing: 0.1em; background: var(--r); color: var(--w); padding: 0.15rem 0.5rem; margin-left: 0.5rem; vertical-align: middle; }
+.prize-sub { font-size: 0.65rem; color: rgba(0,0,0,0.5); margin-top: 0.3rem; line-height: 1.6; }
+
+/* AWARD CARDS */
+.award-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+.award-card { border: 3px solid var(--k); background: var(--w); box-shadow: 5px 5px 0 var(--k); overflow: hidden; transition: transform 0.15s; }
+.award-card:hover { transform: translate(-2px,-2px); }
+.award-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; border-bottom: 3px solid var(--k); background: var(--c); }
+.award-body { padding: 1rem 1rem 1.2rem; }
+.award-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 0.04em; color: var(--k); margin-bottom: 0.3rem; }
+.award-desc { font-size: 0.72rem; color: rgba(0,0,0,0.6); line-height: 1.6; margin-bottom: 0.6rem; }
+.award-amt  { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--r); line-height: 1; }
+.award-amt-note { font-size: 0.58rem; color: rgba(0,0,0,0.4); font-weight: 700; letter-spacing: 0.1em; margin-top: 0.1rem; }
 
 /* CRITERIA */
 .crit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
@@ -570,16 +586,16 @@ footer { background: var(--k); border-top: 4px solid var(--y); padding: 2rem 2.5
       <div class="prize-card gold reveal zoom cont-border">
         <div class="prize-rank">01</div>
         <div>
-          <div class="prize-title">優秀賞</div>
+          <div class="prize-title">優秀賞 — GRAND PRIZE</div>
           <div class="prize-amount cont-prize">¥50,000</div>
         </div>
       </div>
       <div class="prize-card silver reveal zoom cont-border">
         <div class="prize-rank">02</div>
         <div>
-          <div class="prize-title">部門賞（各）</div>
+          <div class="prize-title">部門賞 <span class="prize-badge">×3</span></div>
           <div class="prize-amount cont-prize">¥10,000</div>
-          <div style="font-size:0.68rem;color:rgba(0,0,0,0.55);margin-top:0.3rem;line-height:1.6;">アイディア部門賞 / 技術賞 / 笑賞</div>
+          <div class="prize-sub">アイディア部門賞 · 技術賞 · 笑賞</div>
         </div>
       </div>
       <div class="prize-card bronze reveal zoom cont-border">
@@ -601,6 +617,67 @@ footer { background: var(--k); border-top: 4px solid var(--y); padding: 2rem 2.5
   </section>
 
   <div class="stripe"></div>
+
+  <!-- 賞一覧 -->
+  <section id="awards" class="sec white">
+    <p class="sec-eyebrow reveal stamp">02.5 — AWARDS</p>
+    <h2 class="sec-heading char-heading reveal">賞</h2>
+    <div class="award-grid">
+      <div class="award-card reveal zoom">
+        <img class="award-img" src="賞_1.png" alt="優秀賞">
+        <div class="award-body">
+          <div class="award-name">優秀賞</div>
+          <div class="award-desc">全審査員の総合評価で最高得点を獲得した作品に贈られる最高賞</div>
+          <div class="award-amt">¥50,000</div>
+        </div>
+      </div>
+      <div class="award-card reveal zoom">
+        <img class="award-img" src="賞_2.png" alt="アイディア部門賞">
+        <div class="award-body">
+          <div class="award-name">アイディア部門賞</div>
+          <div class="award-desc">誰も見たことのない発想・表現で観客を驚かせた作品に贈られる</div>
+          <div class="award-amt">¥10,000</div>
+          <div class="award-amt-note">部門賞 ×3のうちの1つ</div>
+        </div>
+      </div>
+      <div class="award-card reveal zoom">
+        <img class="award-img" src="賞_3.png" alt="技術賞">
+        <div class="award-body">
+          <div class="award-name">技術賞</div>
+          <div class="award-desc">高い難易度の技を安定して披露した、技術力抜群の作品に贈られる</div>
+          <div class="award-amt">¥10,000</div>
+          <div class="award-amt-note">部門賞 ×3のうちの1つ</div>
+        </div>
+      </div>
+      <div class="award-card reveal zoom">
+        <img class="award-img" src="賞_4.png" alt="笑賞">
+        <div class="award-body">
+          <div class="award-name">笑賞</div>
+          <div class="award-desc">見ている人を笑顔にした、エンターテインメント性に溢れる作品に贈られる</div>
+          <div class="award-amt">¥10,000</div>
+          <div class="award-amt-note">部門賞 ×3のうちの1つ</div>
+        </div>
+      </div>
+      <div class="award-card reveal zoom">
+        <img class="award-img" src="賞_5.png" alt="審査員賞">
+        <div class="award-body">
+          <div class="award-name">審査員賞</div>
+          <div class="award-desc">各審査員が個人として「推し」と感じた作品に贈られる特別賞</div>
+          <div class="award-amt">¥10,000</div>
+        </div>
+      </div>
+      <div class="award-card reveal zoom">
+        <img class="award-img" src="賞_6.png" alt="特別部門賞">
+        <div class="award-body">
+          <div class="award-name">特別部門賞</div>
+          <div class="award-desc">審査員全員が注目した、特別な才能や個性を放つ作品に贈られる</div>
+          <div class="award-amt">¥10,000</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stripe cyan-stripe"></div>
 
   <!-- 評価基準 -->
   <section id="criteria" class="sec white" style="position:relative;overflow:hidden;">
