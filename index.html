@@ -213,15 +213,21 @@ html, body { height: 100%; overflow: hidden; font-family: 'Noto Sans JP', sans-s
 
 /* SCHEDULE */
 .tl-wrap { margin-top: 2rem; }
-.tl-item { display: flex; padding-bottom: 2rem; position: relative; }
-.tl-item::before { content: ''; position: absolute; left: 80px; top: 10px; bottom: 0; width: 3px; background: var(--k); }
+.tl-item { display: flex; align-items: flex-start; padding-bottom: 2.2rem; position: relative; }
+.tl-item::before { content: ''; position: absolute; left: 96px; top: 18px; bottom: 0; width: 3px; background: var(--k); }
 .tl-item:last-child::before { display: none; }
-.tl-date { font-family: 'Bebas Neue', sans-serif; font-size: 0.9rem; color: var(--k); width: 80px; text-align: right; flex-shrink: 0; line-height: 1.2; }
-.tl-dot { width: 14px; height: 14px; background: var(--k); position: absolute; left: 73px; top: 4px; transform: rotate(45deg); }
+.tl-date { font-family: 'Bebas Neue', sans-serif; font-size: 0.82rem; color: var(--k); width: 96px; text-align: right; flex-shrink: 0; line-height: 1.3; padding-right: 4px; }
+.tl-dot { width: 14px; height: 14px; background: var(--k); position: absolute; left: 89px; top: 4px; transform: rotate(45deg); flex-shrink: 0; }
 .tl-item.active .tl-dot { background: var(--r); border: 2px solid var(--k); }
-.tl-right { padding-left: 32px; }
+.tl-right { padding-left: 36px; }
 .tl-title { font-size: 1rem; font-weight: 900; margin-bottom: 0.2rem; color: var(--k); }
 .tl-desc { font-size: 0.78rem; color: rgba(0,0,0,0.55); line-height: 1.5; }
+
+/* PEOPLE IMAGES */
+.people-img { position: absolute; bottom: 0; pointer-events: none; z-index: 1; }
+.people-img img { display: block; height: 100%; width: auto; object-fit: contain; }
+.people-r { right: 0; }
+.people-l { left: 0; }
 
 /* ENTRY */
 .steps { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1.5rem; }
@@ -429,9 +435,9 @@ footer { background: var(--k); border-top: 4px solid var(--y); padding: 2rem 2.5
   <div class="pl-prize">
     <div class="pl-prize-lbl">賞金</div>
     <div class="pl-prize-row">
-      <div class="pl-prize-item"><span class="pl-prize-rank">1位</span><span class="pl-prize-amt top">¥50,000</span></div>
-      <div class="pl-prize-item"><span class="pl-prize-rank">2位</span><span class="pl-prize-amt">¥30,000</span></div>
-      <div class="pl-prize-item"><span class="pl-prize-rank">3位</span><span class="pl-prize-amt">¥10,000</span></div>
+      <div class="pl-prize-item"><span class="pl-prize-rank">優秀賞</span><span class="pl-prize-amt top">¥50,000</span></div>
+      <div class="pl-prize-item"><span class="pl-prize-rank">部門賞</span><span class="pl-prize-amt">各¥10,000</span></div>
+      <div class="pl-prize-item"><span class="pl-prize-rank">審査員賞</span><span class="pl-prize-amt">¥10,000</span></div>
     </div>
   </div>
   <div class="pl-deco">PCS</div>
@@ -496,29 +502,32 @@ footer { background: var(--k); border-top: 4px solid var(--y); padding: 2rem 2.5
   <!-- TICKER -->
   <div class="ticker dark">
     <div class="ticker-track">
-      <span>FIRST PENGUIN · PEN SPINNING · CREATOR'S SPIN 2026 · JAPAN · ファーストペンギン · 賞金総額¥90,000 · @penguin_ai_jp · </span>
-      <span>FIRST PENGUIN · PEN SPINNING · CREATOR'S SPIN 2026 · JAPAN · ファーストペンギン · 賞金総額¥90,000 · @penguin_ai_jp · </span>
+      <span>FIRST PENGUIN · PEN SPINNING · CREATOR'S SPIN 2026 · JAPAN · ファーストペンギン · 賞金総額¥100,000 · @penguin_ai_jp · </span>
+      <span>FIRST PENGUIN · PEN SPINNING · CREATOR'S SPIN 2026 · JAPAN · ファーストペンギン · 賞金総額¥100,000 · @penguin_ai_jp · </span>
     </div>
   </div>
 
   <!-- ② キャッチコピー -->
-  <section id="catch" class="catch">
-    <div class="catch-bg-txt">SPIN</div>
-    <div class="catch-eyebrow reveal stamp">2026.04.16 ENTRY → <em>2026.05.11 DEADLINE</em></div>
-    <h2 class="catch-heading char-heading reveal">
+  <section id="catch" class="catch" style="position:relative;overflow:hidden;">
+    <div class="people-img people-r" style="height:95%;opacity:0.22;">
+      <img src="people_1.png" alt="">
+    </div>
+    <div class="catch-bg-txt" style="position:relative;z-index:1;">SPIN</div>
+    <div class="catch-eyebrow reveal stamp" style="position:relative;z-index:2;">2026.04.16 ENTRY → <em>2026.05.11 DEADLINE</em></div>
+    <h2 class="catch-heading char-heading reveal" style="position:relative;z-index:2;">
       書く時代は終わった。<br>
       <span class="ac">回す</span>時代だ。
     </h2>
-    <p class="catch-body reveal fly-r">
+    <p class="catch-body reveal fly-r" style="position:relative;z-index:2;">
       ペン回しは「うまさ」だけじゃない。<br>
       誰も見たことのない回し方、誰も試さなかった発想——<br>
       テーマは<strong>「ファーストペンギン」</strong>。<br>
       あなたが最初に飛び込む番だ。
     </p>
-    <div class="catch-tags reveal pop">
+    <div class="catch-tags reveal pop" style="position:relative;z-index:2;">
       <span class="catch-tag hl">動画コンテスト</span>
       <span class="catch-tag">30秒以内</span>
-      <span class="catch-tag hl2">賞金総額 ¥90,000</span>
+      <span class="catch-tag hl2">賞金総額 ¥100,000</span>
       <span class="catch-tag">審査員3名</span>
       <span class="catch-tag">X / YouTube / Instagram</span>
     </div>
@@ -541,7 +550,7 @@ footer { background: var(--k); border-top: 4px solid var(--y); padding: 2rem 2.5
     <div class="ov-grid reveal fly-l">
       <div class="ov-card"><div class="ov-num">01</div><div class="ov-lbl">STYLE</div><div class="ov-val">動画コンテスト</div></div>
       <div class="ov-card"><div class="ov-num">02</div><div class="ov-lbl">THEME</div><div class="ov-val">ファーストペンギン</div></div>
-      <div class="ov-card"><div class="ov-num">03</div><div class="ov-lbl">PRIZE</div><div class="ov-val">総額 ¥90,000</div></div>
+      <div class="ov-card"><div class="ov-num">03</div><div class="ov-lbl">PRIZE</div><div class="ov-val">総額 ¥100,000</div></div>
       <div class="ov-card"><div class="ov-num">04</div><div class="ov-lbl">LENGTH</div><div class="ov-val">30秒以内</div></div>
       <div class="ov-card"><div class="ov-num">05</div><div class="ov-lbl">CRITERIA</div><div class="ov-val">難易度/独自性/安定感/構成力</div></div>
       <div class="ov-card"><div class="ov-num">06</div><div class="ov-lbl">PLATFORM</div><div class="ov-val">X / YouTube / Instagram</div></div>
@@ -551,41 +560,57 @@ footer { background: var(--k); border-top: 4px solid var(--y); padding: 2rem 2.5
   <div class="stripe cyan-stripe"></div>
 
   <!-- 賞金 -->
-  <section id="prize" class="sec yellow">
+  <section id="prize" class="sec yellow" style="position:relative;overflow:hidden;">
+    <div class="people-img people-r" style="height:88%;opacity:0.18;">
+      <img src="people_2.png" alt="">
+    </div>
     <p class="sec-eyebrow reveal stamp">02 — PRIZE</p>
     <h2 class="sec-heading char-heading reveal">賞金</h2>
-    <div class="prize-grid">
+    <div class="prize-grid" style="position:relative;z-index:2;">
       <div class="prize-card gold reveal zoom cont-border">
         <div class="prize-rank">01</div>
         <div>
-          <div class="prize-title">GRAND MASTER</div>
+          <div class="prize-title">優秀賞</div>
           <div class="prize-amount cont-prize">¥50,000</div>
         </div>
       </div>
       <div class="prize-card silver reveal zoom cont-border">
         <div class="prize-rank">02</div>
         <div>
-          <div class="prize-title">EXPERT</div>
-          <div class="prize-amount cont-prize">¥30,000</div>
+          <div class="prize-title">部門賞（各）</div>
+          <div class="prize-amount cont-prize">¥10,000</div>
+          <div style="font-size:0.68rem;color:rgba(0,0,0,0.55);margin-top:0.3rem;line-height:1.6;">アイディア部門賞 / 技術賞 / 笑賞</div>
         </div>
       </div>
       <div class="prize-card bronze reveal zoom cont-border">
         <div class="prize-rank">03</div>
         <div>
-          <div class="prize-title">SPECIALIST</div>
+          <div class="prize-title">審査員賞</div>
+          <div class="prize-amount cont-prize">¥10,000</div>
+        </div>
+      </div>
+      <div class="prize-card reveal zoom cont-border" style="background:#e8f0ff;">
+        <div class="prize-rank">04</div>
+        <div>
+          <div class="prize-title">特別部門賞</div>
           <div class="prize-amount cont-prize">¥10,000</div>
         </div>
       </div>
     </div>
+    <div style="margin-top:1.2rem;font-family:'Bebas Neue',sans-serif;font-size:0.8rem;letter-spacing:0.15em;color:rgba(0,0,0,0.45);position:relative;z-index:2;">TOTAL PRIZE ¥100,000</div>
   </section>
 
   <div class="stripe"></div>
 
   <!-- 評価基準 -->
-  <section id="criteria" class="sec white">
+  <section id="criteria" class="sec white" style="position:relative;overflow:hidden;">
+    <div class="people-img people-l" style="height:80%;opacity:0.12;">
+      <img src="people_3.png" alt="">
+    </div>
     <p class="sec-eyebrow reveal stamp">03 — CRITERIA</p>
     <h2 class="sec-heading char-heading reveal">評価基準</h2>
-    <div class="crit-grid">
+    <p class="reveal fly-r" style="font-size:0.82rem;color:rgba(0,0,0,0.55);margin-bottom:1.5rem;position:relative;z-index:2;">賞によってかなり違いますが、ベーシックなものを紹介します。</p>
+    <div class="crit-grid" style="position:relative;z-index:2;">
       <div class="crit-item reveal zoom">
         <div class="crit-num">01</div>
         <div class="crit-name">難易度</div>
@@ -606,12 +631,24 @@ footer { background: var(--k); border-top: 4px solid var(--y); padding: 2rem 2.5
         <div class="crit-name">構成力</div>
         <div class="crit-desc">同じ技に偏らず、様々な技を使えているか</div>
       </div>
+      <div class="crit-item reveal zoom">
+        <div class="crit-num">05</div>
+        <div class="crit-name">精神力</div>
+        <div class="crit-desc">雰囲気的に余裕が出ているか</div>
+      </div>
+      <div class="crit-item reveal zoom">
+        <div class="crit-num">06</div>
+        <div class="crit-name">愛力</div>
+        <div class="crit-desc">ペンに対する愛着が所作から感じ取れるかどうか</div>
+      </div>
     </div>
-    <div class="crit-minus reveal fly-l">
+    <div class="crit-minus reveal fly-l" style="position:relative;z-index:2;">
       <div class="crit-minus-title">— 減点対象</div>
       <ul class="crit-minus-list">
         <li>意図のない指遣い・回転速度・回転軌道のブレ</li>
-        <li>極端に単調な構成（例：20秒間同じ技を繰り返す）</li>
+        <li>ペンを粗末にする行為</li>
+        <li>手でペンを回さず、肩や膝で回している</li>
+        <li>ペンが体より大きい場合</li>
         <li>低画質・背景ノイズ等でペンや指の動きが見えにくい</li>
       </ul>
     </div>
@@ -642,13 +679,16 @@ footer { background: var(--k); border-top: 4px solid var(--y); padding: 2rem 2.5
   <div class="stripe"></div>
 
   <!-- 募集要項 -->
-  <section id="rules" class="sec white">
-    <p class="sec-eyebrow reveal stamp">04 — RULES</p>
+  <section id="rules" class="sec white" style="position:relative;overflow:hidden;">
+    <div class="people-img people-r" style="height:85%;opacity:0.13;">
+      <img src="people_4.png" alt="">
+    </div>
+    <p class="sec-eyebrow reveal stamp">05 — RULES</p>
     <h2 class="sec-heading char-heading reveal">募集要項</h2>
-    <div class="reveal fly-r">
+    <div class="reveal fly-r" style="position:relative;z-index:2;">
       <h3 class="rule-h3">① 参加資格</h3>
-      <div class="rule-item"><div class="rule-dot"></div><p>日本のペンスピナーであること</p></div>
-      <div class="rule-item"><div class="rule-dot"></div><p>日本文化に深い関わりがあり、日本語でのコミュニケーションが円滑に進められる方も参加OK</p></div>
+      <div class="rule-item"><div class="rule-dot"></div><p>どなたでもOK</p></div>
+      <div class="rule-item"><div class="rule-dot"></div><p>※態度が悪い方などはご遠慮願います</p></div>
 
       <h3 class="rule-h3">② ペン</h3>
       <div class="rule-item"><div class="rule-dot"></div><p><strong>棒状のものであればなんでもOK！</strong>何本使ってもOK。長さ・重さの制限なし</p></div>
@@ -659,7 +699,6 @@ footer { background: var(--k); border-top: 4px solid var(--y); padding: 2rem 2.5
       <div class="rule-item"><div class="rule-dot"></div><p><strong>30秒以内</strong></p></div>
       <div class="rule-item"><div class="rule-dot"></div><p>編集はトリミングと色調補正のみ。それ以外の編集は禁止</p></div>
       <div class="rule-item"><div class="rule-dot"></div><p>審査員の環境で再生できない場合は再提出を求めることがあります</p></div>
-      <div class="caution"><p>期日までの対応がない場合や改善が見られない場合はその時点で失格となります。</p></div>
     </div>
   </section>
 
@@ -703,7 +742,7 @@ footer { background: var(--k); border-top: 4px solid var(--y); padding: 2rem 2.5
         <div class="tl-right"><div class="tl-title">動画提出締め切り</div><div class="tl-desc">30秒以内の新規撮影動画を提出（約4週間）</div></div>
       </div>
       <div class="tl-item reveal fly-l">
-        <div class="tl-date">5.12–5.18</div>
+        <div class="tl-date">5.12<br>–5.18</div>
         <div class="tl-dot"></div>
         <div class="tl-right"><div class="tl-title">審査期間</div><div class="tl-desc">審査員3名による総合評価（1週間）</div></div>
       </div>
@@ -726,14 +765,14 @@ footer { background: var(--k); border-top: 4px solid var(--y); padding: 2rem 2.5
         <div class="step-n">01</div>
         <div class="step-body">
           <strong>X（Twitter）に動画を投稿する</strong>
-          <p>指定ハッシュタグ <code style="background:var(--y);padding:0 0.3rem;font-size:0.85em;">#ハッシュタグ</code> を付け、エントリー名と共に動画をポスト。</p>
+          <p>指定ハッシュタグ <code style="background:var(--y);padding:0 0.3rem;font-size:0.85em;">#PCS2026</code> を付け、動画をポスト。</p>
         </div>
       </li>
       <li class="step reveal pop">
         <div class="step-n">02</div>
         <div class="step-body">
-          <strong>公式アカウントへDMを送る</strong>
-          <p>投稿URLと動画ダウンロードリンクを <strong style="background:var(--c);padding:0 0.3rem;">@penguin_ai_jp</strong> のDMへ送付。</p>
+          <strong>投稿URLを事務局に送信</strong>
+          <p>投稿URLを <strong style="background:var(--c);color:var(--w);padding:0 0.3rem;">@PENguin_ainet</strong> のDMへ送付。</p>
         </div>
       </li>
       <li class="step reveal pop">
@@ -759,9 +798,7 @@ footer { background: var(--k); border-top: 4px solid var(--y); padding: 2rem 2.5
   <footer>
     <div class="footer-logo">PENguin Creator's Spin 2026</div>
     <ul class="footer-links">
-      <li><a href="https://ps-japancup.mystrikingly.com/" target="_blank">Japan Cup 参考</a></li>
-      <li><a href="https://waza.penspinning.jp/2018/05/23/word/" target="_blank">語句解説</a></li>
-      <li><a href="mailto:info@penguin-ai.net">お問い合わせ</a></li>
+      <li><a href="https://x.com/PENguin_ainet" target="_blank">@PENguin_ainet</a></li>
     </ul>
     <p class="footer-copy">© 2026 PENguin Creator's Spin 運営チーム. All rights reserved.</p>
   </footer>
