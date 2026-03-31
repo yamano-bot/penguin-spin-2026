@@ -42,8 +42,8 @@ html, body { height: 100%; overflow: hidden; font-family: 'Noto Sans JP', sans-s
 .pl-logo { font-family: 'Bebas Neue', sans-serif; font-size: 0.8rem; letter-spacing: 0.18em; color: rgba(255,255,255,0.5); margin-bottom: 1.5rem; }
 .pl-tag { display: inline-block; background: var(--y); color: var(--k); font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em; padding: 0.2rem 0.8rem; margin-bottom: 1rem; transform: rotate(-1deg); }
 .pl-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.4rem, 5vw, 4.8rem); line-height: 0.85; letter-spacing: 0.02em; color: var(--w); margin-bottom: 1.8rem; }
-.pl-title .cy { color: var(--y); -webkit-text-stroke: 0; text-shadow: 3px 3px 0 rgba(0,0,0,0.4); }
-.pl-title .out { -webkit-text-stroke: 3px var(--y); color: transparent; }
+.pl-title .cy { color: var(--y); -webkit-text-stroke: 0; text-shadow: none; }
+.pl-title .out { color: var(--y); -webkit-text-stroke: 0; }
 .pl-theme { border-left: 5px solid var(--y); padding-left: 0.9rem; margin-bottom: 1.5rem; }
 .pl-theme-lbl { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.22em; color: rgba(255,255,255,0.5); margin-bottom: 0.2rem; }
 .pl-theme-txt { font-size: 1rem; font-weight: 900; color: var(--w); }
@@ -118,21 +118,15 @@ html, body { height: 100%; overflow: hidden; font-family: 'Noto Sans JP', sans-s
 @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 /* ─── BANNER IMAGE ─── */
-.banner-img { position: relative; height: 58vh; min-height: 300px; background: var(--y); overflow: hidden; border-bottom: 4px solid var(--k); display: flex; align-items: flex-end; }
-.banner-img-bg {
-  position: absolute; inset: 0;
-  background:
-    repeating-linear-gradient(45deg, rgba(0,0,0,0.04) 0, rgba(0,0,0,0.04) 1px, transparent 1px, transparent 30px),
-    repeating-linear-gradient(-45deg, rgba(0,0,0,0.04) 0, rgba(0,0,0,0.04) 1px, transparent 1px, transparent 30px),
-    var(--y);
-  display: flex; align-items: center; justify-content: center;
-}
-.banner-img-deco { font-family: 'Bebas Neue', sans-serif; font-size: clamp(8rem, 20vw, 18rem); color: rgba(0,0,0,0.07); line-height: 0.9; letter-spacing: -0.02em; user-select: none; }
-.banner-img-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); text-align: center; }
-.banner-img-placeholder-lbl { font-family: 'Bebas Neue', sans-serif; font-size: 0.7rem; letter-spacing: 0.35em; color: rgba(0,0,0,0.3); border: 2px solid rgba(0,0,0,0.2); padding: 0.3rem 1.2rem; display: inline-block; }
-.banner-img-overlay { position: relative; z-index: 2; width: 100%; padding: 0 2rem 1.5rem; background: linear-gradient(to top, rgba(255,230,0,0.95) 0%, transparent 100%); }
-.banner-img-date { font-family: 'Bebas Neue', sans-serif; font-size: 0.72rem; letter-spacing: 0.2em; color: var(--k); opacity: 0.7; margin-bottom: 0.3rem; }
-.banner-img-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.6rem, 3vw, 2.5rem); color: var(--k); letter-spacing: 0.02em; line-height: 0.9; }
+.banner-img { position: relative; overflow: hidden; border-bottom: 4px solid var(--k); }
+.banner-img img.banner-poster { display: block; width: 100%; height: auto; }
+.banner-img-bg { display: none; }
+.banner-img-center { display: none; }
+.banner-img-overlay { display: none; }
+.banner-img-deco { display: none; }
+.banner-img-placeholder-lbl { display: none; }
+.banner-img-date { display: none; }
+.banner-img-title { display: none; }
 
 /* ─── CATCH (キャッチコピー) ─── */
 .catch { position: relative; background: var(--w); overflow: hidden; padding: 4rem 2.5rem 3.5rem; border-bottom: 4px solid var(--k); }
@@ -201,10 +195,10 @@ html, body { height: 100%; overflow: hidden; font-family: 'Noto Sans JP', sans-s
 .crit-minus-list li { font-size: 0.8rem; line-height: 1.55; padding-left: 0.8rem; border-left: 2px solid var(--r); color: rgba(0,0,0,0.75); }
 
 /* RULES */
-.rule-h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 0.05em; color: var(--w); border-bottom: 3px solid var(--y); padding-bottom: 0.3rem; margin: 1.8rem 0 1rem; }
+.rule-h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 0.05em; color: var(--k); border-bottom: 3px solid var(--c); padding-bottom: 0.3rem; margin: 1.8rem 0 1rem; }
 .rule-item { display: flex; gap: 0.6rem; margin-bottom: 0.7rem; align-items: flex-start; }
-.rule-dot { width: 7px; height: 7px; background: var(--y); flex-shrink: 0; margin-top: 0.48rem; transform: rotate(45deg); }
-.rule-item p { font-size: 0.84rem; line-height: 1.65; color: rgba(255,255,255,0.85); }
+.rule-dot { width: 7px; height: 7px; background: var(--c); flex-shrink: 0; margin-top: 0.48rem; transform: rotate(45deg); }
+.rule-item p { font-size: 0.84rem; line-height: 1.65; color: rgba(0,0,0,0.8); }
 .rule-item strong { background: var(--y); padding: 0 0.2rem; color: var(--k); }
 .caution { background: rgba(255,45,45,0.08); border: 2px solid var(--r); padding: 0.8rem 1rem; margin-top: 1rem; }
 .caution p { font-size: 0.78rem; color: var(--r); line-height: 1.6; font-weight: 700; }
@@ -355,7 +349,56 @@ footer { background: var(--k); border-top: 4px solid var(--y); padding: 2rem 2.5
 
 
 /* ─── MOBILE ─── */
-@media (max-width: 960px) {
+/* 1400px: パネルを少し縮小 */
+@media (max-width: 1400px) {
+  :root {
+    --panel-l-w: 280px;
+    --panel-r-w: 340px;
+    --strip-ci-w: 60px;
+  }
+  .pl-title { font-size: clamp(2.6rem, 4vw, 3.8rem); }
+}
+
+/* 1200px: さらに縮小 */
+@media (max-width: 1200px) {
+  :root {
+    --panel-l-w: 220px;
+    --panel-r-w: 260px;
+    --strip-ci-w: 48px;
+  }
+  .pl-title { font-size: clamp(2rem, 3.5vw, 3rem); }
+  .pl-prize-amt.top { font-size: 1.6rem; }
+  .pl-deco { display: none; }
+  .pr-bg { display: none; }
+  .pr-sections li .pr-item-lbl { font-size: 0.7rem; }
+}
+
+/* 1024px: 右パネルをコンパクトに */
+@media (max-width: 1024px) {
+  :root {
+    --panel-l-w: 180px;
+    --panel-r-w: 200px;
+    --strip-ci-w: 40px;
+  }
+  .pl-title { font-size: clamp(1.8rem, 3vw, 2.6rem); }
+  .pl-prize-row { flex-direction: column; gap: 0.3rem; }
+  .pl-theme { display: none; }
+  .pr-nav { display: none; }
+  .pr-sections li .pr-item-lbl { display: none; }
+}
+
+/* 860px: 右パネル非表示 */
+@media (max-width: 860px) {
+  :root {
+    --panel-r-w: 0px;
+    --strip-ci-w: 36px;
+  }
+  .panel-r, .strip-ci-r, .strip-r { display: none; }
+  .main { right: calc(var(--strip-w) + var(--strip-ci-w)); }
+}
+
+/* 680px: 左パネル・両ストリップも非表示、シングルカラム */
+@media (max-width: 680px) {
   html, body { overflow: auto; height: auto; }
   .strip, .strip-ci, .panel-l, .panel-r { display: none; }
   .main { position: static; left: 0; right: 0; top: 0; bottom: 0; overflow-y: auto; }
@@ -447,16 +490,7 @@ footer { background: var(--k); border-top: 4px solid var(--y); padding: 2rem 2.5
 
   <!-- ① BANNER IMAGE -->
   <section id="banner" class="banner-img">
-    <div class="banner-img-bg">
-      <div class="banner-img-deco">PCS</div>
-    </div>
-    <div class="banner-img-center">
-      <div class="banner-img-placeholder-lbl">VISUAL IMAGE</div>
-    </div>
-    <div class="banner-img-overlay">
-      <div class="banner-img-date">2026.04.16 ENTRY START → 2026.05.11 DEADLINE</div>
-      <div class="banner-img-title">PENguin Creator's<br>Spin 2026</div>
-    </div>
+    <img class="banner-poster" src="top.png" alt="PENguin Creator's Spin 2026">
   </section>
 
   <!-- TICKER -->
@@ -608,7 +642,7 @@ footer { background: var(--k); border-top: 4px solid var(--y); padding: 2rem 2.5
   <div class="stripe"></div>
 
   <!-- 募集要項 -->
-  <section id="rules" class="sec cyan">
+  <section id="rules" class="sec white">
     <p class="sec-eyebrow reveal stamp">04 — RULES</p>
     <h2 class="sec-heading char-heading reveal">募集要項</h2>
     <div class="reveal fly-r">
