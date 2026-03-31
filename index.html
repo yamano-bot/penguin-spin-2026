@@ -192,7 +192,7 @@ html, body { height: 100%; overflow: hidden; font-family: 'Noto Sans JP', sans-s
 .award-grid { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 1.5rem; }
 .award-card { display: flex; flex-direction: column; border: 3px solid var(--k); background: var(--w); box-shadow: 6px 6px 0 var(--k); overflow: hidden; transition: transform 0.15s; }
 .award-card:hover { transform: translate(-3px,-3px); box-shadow: 9px 9px 0 var(--k); }
-.award-img { width: 100%; height: 180px; object-fit: cover; object-position: center top; display: block; border-bottom: 3px solid var(--k); background: var(--c); }
+.award-img { width: 100%; height: 180px; object-fit: contain; object-position: center; display: block; border-bottom: 3px solid var(--k); background: #f5f0e8; }
 .award-body { padding: 1rem 1.2rem 1.2rem; display: flex; flex-direction: column; }
 .award-name { font-family: 'Noto Sans JP', sans-serif; font-size: 1rem; font-weight: 900; letter-spacing: 0.04em; color: var(--k); margin-bottom: 0.4rem; }
 .award-desc { font-size: 0.75rem; color: rgba(0,0,0,0.6); line-height: 1.7; margin-bottom: 0.6rem; }
@@ -274,6 +274,17 @@ html, body { height: 100%; overflow: hidden; font-family: 'Noto Sans JP', sans-s
 .agree-title { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; color: rgba(0,0,0,0.5); margin-bottom: 1rem; }
 .agree-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
 .agree-list li { font-size: 0.78rem; color: rgba(0,0,0,0.65); line-height: 1.6; padding-left: 0.9rem; border-left: 2px solid rgba(0,0,0,0.15); }
+
+/* GALLERY */
+.gallery-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3px; margin-top: 1.5rem; border: 3px solid var(--k); }
+.gallery-cell { aspect-ratio: 1/1; background: var(--k); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
+.gallery-cell-inner { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; background: repeating-linear-gradient(-45deg, rgba(255,255,255,0.03) 0, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 8px); }
+.gallery-cell-icon { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: rgba(255,255,255,0.15); line-height: 1; }
+.gallery-cell-lbl { font-size: 0.5rem; letter-spacing: 0.2em; color: rgba(255,255,255,0.2); }
+
+/* APPLICANTS */
+.applicants-hashtag { display: inline-block; font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.06em; background: var(--k); color: var(--y); padding: 0.4rem 1.2rem; border: 3px solid var(--k); box-shadow: 4px 4px 0 var(--c); margin-bottom: 1.5rem; }
+.applicants-embed { border: 3px solid var(--k); overflow: hidden; background: var(--w); }
 
 /* FOOTER */
 footer { background: var(--k); border-top: 4px solid var(--y); padding: 2rem 2.5rem; }
@@ -500,6 +511,8 @@ footer { background: var(--k); border-top: 4px solid var(--y); padding: 2rem 2.5
       <li><a href="#judges"><div class="pr-item-left"><span class="pr-item-sec">SEC</span><span class="pr-item-num">06</span></div><span class="pr-item-lbl">審査員</span></a></li>
       <li><a href="#schedule"><div class="pr-item-left"><span class="pr-item-sec">SEC</span><span class="pr-item-num">07</span></div><span class="pr-item-lbl">スケジュール</span></a></li>
       <li><a href="#entry"><div class="pr-item-left"><span class="pr-item-sec">SEC</span><span class="pr-item-num">08</span></div><span class="pr-item-lbl">エントリー</span></a></li>
+      <li><a href="#gallery"><div class="pr-item-left"><span class="pr-item-sec">SEC</span><span class="pr-item-num">09</span></div><span class="pr-item-lbl">ギャラリー</span></a></li>
+      <li><a href="#applicants"><div class="pr-item-left"><span class="pr-item-sec">SEC</span><span class="pr-item-num">10</span></div><span class="pr-item-lbl">応募者</span></a></li>
     </ul>
   </div>
 </aside>
@@ -879,6 +892,44 @@ footer { background: var(--k); border-top: 4px solid var(--y); padding: 2rem 2.5
       </ul>
     </div>
   </section>
+
+  <div class="stripe cyan-stripe"></div>
+
+  <!-- ギャラリー -->
+  <section id="gallery" class="sec white">
+    <p class="sec-eyebrow reveal stamp">09 — GALLERY</p>
+    <h2 class="sec-heading char-heading reveal">ギャラリー</h2>
+    <p style="font-size:0.78rem;color:rgba(0,0,0,0.45);margin-bottom:0.8rem;">エントリー動画のギャラリーは審査期間後に公開予定です。</p>
+    <div class="gallery-grid reveal fly-l">
+      <div class="gallery-cell"><div class="gallery-cell-inner"><div class="gallery-cell-icon">▶</div><div class="gallery-cell-lbl">COMING SOON</div></div></div>
+      <div class="gallery-cell"><div class="gallery-cell-inner"><div class="gallery-cell-icon">▶</div><div class="gallery-cell-lbl">COMING SOON</div></div></div>
+      <div class="gallery-cell"><div class="gallery-cell-inner"><div class="gallery-cell-icon">▶</div><div class="gallery-cell-lbl">COMING SOON</div></div></div>
+      <div class="gallery-cell"><div class="gallery-cell-inner"><div class="gallery-cell-icon">▶</div><div class="gallery-cell-lbl">COMING SOON</div></div></div>
+      <div class="gallery-cell"><div class="gallery-cell-inner"><div class="gallery-cell-icon">▶</div><div class="gallery-cell-lbl">COMING SOON</div></div></div>
+      <div class="gallery-cell"><div class="gallery-cell-inner"><div class="gallery-cell-icon">▶</div><div class="gallery-cell-lbl">COMING SOON</div></div></div>
+    </div>
+  </section>
+
+  <div class="stripe"></div>
+
+  <!-- 応募者 -->
+  <section id="applicants" class="sec yellow">
+    <p class="sec-eyebrow reveal stamp">10 — APPLICANTS</p>
+    <h2 class="sec-heading char-heading reveal">応募者</h2>
+    <p style="font-size:0.78rem;color:rgba(0,0,0,0.6);margin-bottom:1.2rem;">ハッシュタグ <strong>#pcs202604</strong> の投稿一覧</p>
+    <div class="applicants-hashtag reveal stamp">#pcs202604</div>
+    <div class="applicants-embed reveal fly-l">
+      <a class="twitter-timeline"
+         data-height="520"
+         data-theme="light"
+         data-chrome="noheader nofooter noborders"
+         href="https://twitter.com/hashtag/pcs202604?src=hashtag_click&f=live">
+        <div style="padding:2rem;text-align:center;font-size:0.85rem;color:rgba(0,0,0,0.5);">#pcs202604 の投稿を読み込み中…</div>
+      </a>
+    </div>
+  </section>
+
+  <div class="stripe cyan-stripe"></div>
 
   <footer>
     <div class="footer-logo">PENguin Creator's Spin 2026</div>
