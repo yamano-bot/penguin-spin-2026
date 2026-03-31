@@ -189,15 +189,30 @@ html, body { height: 100%; overflow: hidden; font-family: 'Noto Sans JP', sans-s
 .prize-sub { font-size: 0.65rem; color: rgba(0,0,0,0.5); margin-top: 0.3rem; line-height: 1.6; }
 
 /* AWARD CARDS */
-.award-grid { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1.5rem; }
-.award-card { display: flex; flex-direction: row; border: 3px solid var(--k); background: var(--w); box-shadow: 5px 5px 0 var(--k); overflow: hidden; transition: transform 0.15s; }
+.award-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+.award-card { display: flex; flex-direction: column; border: 3px solid var(--k); background: var(--w); box-shadow: 5px 5px 0 var(--k); overflow: hidden; transition: transform 0.15s; }
 .award-card:hover { transform: translate(-2px,-2px); }
-.award-img { width: 120px; min-width: 120px; height: 120px; object-fit: cover; display: block; border-right: 3px solid var(--k); background: var(--c); flex-shrink: 0; }
-.award-body { padding: 0.9rem 1rem; display: flex; flex-direction: column; justify-content: center; }
-.award-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 0.04em; color: var(--k); margin-bottom: 0.3rem; }
-.award-desc { font-size: 0.72rem; color: rgba(0,0,0,0.6); line-height: 1.6; margin-bottom: 0.5rem; }
-.award-amt  { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; color: var(--r); line-height: 1; }
-.award-amt-note { font-size: 0.58rem; color: rgba(0,0,0,0.4); font-weight: 700; letter-spacing: 0.1em; margin-top: 0.15rem; }
+.award-img { width: 100%; height: 140px; object-fit: cover; object-position: center top; display: block; border-bottom: 3px solid var(--k); background: var(--c); }
+.award-body { padding: 0.8rem 0.9rem 1rem; display: flex; flex-direction: column; }
+.award-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.04em; color: var(--k); margin-bottom: 0.3rem; }
+.award-desc { font-size: 0.68rem; color: rgba(0,0,0,0.6); line-height: 1.6; margin-bottom: 0.5rem; flex: 1; }
+.award-amt  { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--r); line-height: 1; }
+.award-amt-note { font-size: 0.55rem; color: rgba(0,0,0,0.4); font-weight: 700; letter-spacing: 0.1em; margin-top: 0.15rem; }
+
+/* JUDGES COMING SOON */
+.judges-coming { margin-top: 2rem; text-align: center; border: 3px solid var(--k); padding: 3rem 2rem; background: var(--k); box-shadow: 6px 6px 0 var(--c); position: relative; overflow: hidden; }
+.judges-coming-bg { position: absolute; inset: 0; font-family: 'Bebas Neue', sans-serif; font-size: 5rem; color: rgba(255,255,255,0.04); line-height: 0.9; word-break: break-all; user-select: none; }
+.judges-coming-label { font-family: 'Bebas Neue', sans-serif; font-size: 0.65rem; letter-spacing: 0.4em; color: var(--c); border: 1px solid var(--c); display: inline-block; padding: 0.2rem 1rem; margin-bottom: 1rem; position: relative; }
+.judges-coming-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 4vw, 3rem); letter-spacing: 0.06em; color: var(--y); position: relative; line-height: 1; margin-bottom: 0.5rem; }
+.judges-coming-sub { font-size: 0.72rem; color: rgba(255,255,255,0.4); letter-spacing: 0.12em; position: relative; }
+.judges-coming-dots { display: flex; justify-content: center; gap: 1.5rem; margin-top: 2rem; position: relative; }
+.judge-mystery { width: 72px; height: 72px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: rgba(255,255,255,0.2); animation: mysteryPulse 2.4s ease-in-out infinite; }
+.judge-mystery:nth-child(2) { animation-delay: 0.8s; }
+.judge-mystery:nth-child(3) { animation-delay: 1.6s; }
+@keyframes mysteryPulse {
+  0%,100% { border-color: rgba(255,255,255,0.15); color: rgba(255,255,255,0.15); }
+  50% { border-color: var(--y); color: var(--y); }
+}
 
 /* CRITERIA */
 .crit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
@@ -453,7 +468,7 @@ footer { background: var(--k); border-top: 4px solid var(--y); padding: 2rem 2.5
     <div class="pl-prize-lbl">賞金</div>
     <div class="pl-prize-row">
       <div class="pl-prize-item"><span class="pl-prize-rank">優秀賞</span><span class="pl-prize-amt top">¥50,000</span></div>
-      <div class="pl-prize-item"><span class="pl-prize-rank">部門賞</span><span class="pl-prize-amt">各¥10,000</span></div>
+      <div class="pl-prize-item"><span class="pl-prize-rank">部門賞</span><span class="pl-prize-amt">¥10,000×3</span></div>
       <div class="pl-prize-item"><span class="pl-prize-rank">審査員賞</span><span class="pl-prize-amt">¥10,000</span></div>
     </div>
   </div>
@@ -622,7 +637,7 @@ footer { background: var(--k); border-top: 4px solid var(--y); padding: 2rem 2.5
   <!-- 賞一覧 -->
   <section id="awards" class="sec white">
     <p class="sec-eyebrow reveal stamp">02.5 — AWARDS</p>
-    <h2 class="sec-heading char-heading reveal">賞</h2>
+    <h2 class="sec-heading char-heading reveal">各賞</h2>
     <div class="award-grid">
       <div class="award-card reveal zoom">
         <img class="award-img" src="賞_1.png" alt="優秀賞">
@@ -786,18 +801,15 @@ footer { background: var(--k); border-top: 4px solid var(--y); padding: 2rem 2.5
   <section id="judges" class="sec white">
     <p class="sec-eyebrow reveal stamp">05 — JUDGES</p>
     <h2 class="sec-heading char-heading reveal">審査員</h2>
-    <div class="judges-grid">
-      <div class="judge-card reveal fly-l">
-        <div class="judge-avatar">？</div>
-        <div><div class="judge-name">TBA</div><div class="judge-role">TBA</div></div>
-      </div>
-      <div class="judge-card reveal fly-r">
-        <div class="judge-avatar">？</div>
-        <div><div class="judge-name">TBA</div><div class="judge-role">TBA</div></div>
-      </div>
-      <div class="judge-card reveal fly-l">
-        <div class="judge-avatar">？</div>
-        <div><div class="judge-name">TBA</div><div class="judge-role">TBA</div></div>
+    <div class="judges-coming reveal zoom">
+      <div class="judges-coming-bg">？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？</div>
+      <div class="judges-coming-label">COMING SOON</div>
+      <div class="judges-coming-title">審査員は近日公開</div>
+      <div class="judges-coming-sub">JUDGES WILL BE ANNOUNCED SOON</div>
+      <div class="judges-coming-dots">
+        <div class="judge-mystery">？</div>
+        <div class="judge-mystery">？</div>
+        <div class="judge-mystery">？</div>
       </div>
     </div>
   </section>
@@ -810,9 +822,13 @@ footer { background: var(--k); border-top: 4px solid var(--y); padding: 2rem 2.5
     <h2 class="sec-heading char-heading reveal">スケジュール</h2>
     <div class="tl-wrap">
       <div class="tl-item active reveal fly-l">
-        <div class="tl-date">4.16</div>
+        <div class="tl-date" style="font-size:1.1rem;line-height:1.1;color:var(--r);font-weight:900;">4月<br>16日</div>
         <div class="tl-dot-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
-        <div class="tl-right"><div class="tl-title">エントリー受付開始</div><div class="tl-desc">X（Twitter）にてハッシュタグ付きで投稿</div></div>
+        <div class="tl-right">
+          <div class="tl-title" style="font-size:1.1rem;">エントリー受付開始</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:0.7rem;letter-spacing:0.2em;background:var(--r);color:var(--w);display:inline-block;padding:0.1rem 0.6rem;margin-bottom:0.3rem;">2026.04.16 START</div>
+          <div class="tl-desc">X（Twitter）にてハッシュタグ付きで投稿</div>
+        </div>
       </div>
       <div class="tl-item reveal fly-r">
         <div class="tl-date">5.11</div>
