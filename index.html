@@ -192,7 +192,7 @@ html, body { height: 100%; overflow: hidden; font-family: 'Noto Sans JP', sans-s
 .award-grid { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 1.5rem; }
 .award-card { display: flex; flex-direction: column; border: 3px solid var(--k); background: var(--w); box-shadow: 6px 6px 0 var(--k); overflow: hidden; transition: transform 0.15s; }
 .award-card:hover { transform: translate(-3px,-3px); box-shadow: 9px 9px 0 var(--k); }
-.award-img { width: 100%; height: 180px; object-fit: contain; object-position: center; display: block; border-bottom: 3px solid var(--k); background: #f5f0e8; }
+.award-img { width: 100%; height: 180px; object-fit: cover; object-position: center; display: block; border-bottom: 3px solid var(--k); }
 .award-body { padding: 1rem 1.2rem 1.2rem; display: flex; flex-direction: column; }
 .award-name { font-family: 'Noto Sans JP', sans-serif; font-size: 1rem; font-weight: 900; letter-spacing: 0.04em; color: var(--k); margin-bottom: 0.4rem; }
 .award-desc { font-size: 0.75rem; color: rgba(0,0,0,0.6); line-height: 1.7; margin-bottom: 0.6rem; }
@@ -276,11 +276,24 @@ html, body { height: 100%; overflow: hidden; font-family: 'Noto Sans JP', sans-s
 .agree-list li { font-size: 0.78rem; color: rgba(0,0,0,0.65); line-height: 1.6; padding-left: 0.9rem; border-left: 2px solid rgba(0,0,0,0.15); }
 
 /* GALLERY */
-.gallery-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3px; margin-top: 1.5rem; border: 3px solid var(--k); }
-.gallery-cell { aspect-ratio: 1/1; background: var(--k); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
-.gallery-cell-inner { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; background: repeating-linear-gradient(-45deg, rgba(255,255,255,0.03) 0, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 8px); }
-.gallery-cell-icon { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: rgba(255,255,255,0.15); line-height: 1; }
-.gallery-cell-lbl { font-size: 0.5rem; letter-spacing: 0.2em; color: rgba(255,255,255,0.2); }
+.gallery-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px; margin-top: 1.5rem; }
+.gallery-item { aspect-ratio: 1/1; overflow: hidden; cursor: pointer; position: relative; border: 2px solid var(--k); }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease; }
+.gallery-item:hover img { transform: scale(1.06); }
+.gallery-item::after { content: '⊕'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--w); background: rgba(0,0,0,0); transition: background 0.2s; pointer-events: none; }
+.gallery-item:hover::after { background: rgba(0,0,0,0.35); }
+
+/* LIGHTBOX */
+.lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 9000; align-items: center; justify-content: center; padding: 2rem; }
+.lightbox.open { display: flex; }
+.lightbox-img { max-width: 100%; max-height: 90vh; object-fit: contain; border: 4px solid var(--w); display: block; }
+.lightbox-close { position: absolute; top: 1.2rem; right: 1.5rem; font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--w); cursor: pointer; line-height: 1; opacity: 0.7; transition: opacity 0.15s; }
+.lightbox-close:hover { opacity: 1; }
+.lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--w); cursor: pointer; opacity: 0.6; transition: opacity 0.15s; padding: 0 1rem; user-select: none; }
+.lightbox-nav:hover { opacity: 1; }
+.lightbox-prev { left: 0; }
+.lightbox-next { right: 0; }
+.lightbox-counter { position: absolute; bottom: 1.2rem; left: 50%; transform: translateX(-50%); font-family: 'Bebas Neue', sans-serif; font-size: 0.85rem; letter-spacing: 0.2em; color: rgba(255,255,255,0.5); }
 
 /* APPLICANTS */
 .applicants-hashtag { display: inline-block; font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.06em; background: var(--k); color: var(--y); padding: 0.4rem 1.2rem; border: 3px solid var(--k); box-shadow: 4px 4px 0 var(--c); margin-bottom: 1.5rem; }
@@ -830,9 +843,10 @@ footer { background: var(--k); border-top: 4px solid var(--y); padding: 2rem 2.5
     <div class="judges-coming reveal zoom">
       <div class="judges-coming-bg">？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？</div>
       <div class="judges-coming-label">COMING SOON</div>
-      <div class="judges-coming-title">あと２名は近日公開</div>
-      <div class="judges-coming-sub">2 MORE JUDGES WILL BE ANNOUNCED SOON</div>
+      <div class="judges-coming-title">あと３名は近日公開</div>
+      <div class="judges-coming-sub">3 MORE JUDGES WILL BE ANNOUNCED SOON</div>
       <div class="judges-coming-dots">
+        <div class="judge-mystery">？</div>
         <div class="judge-mystery">？</div>
         <div class="judge-mystery">？</div>
       </div>
@@ -913,16 +927,27 @@ footer { background: var(--k); border-top: 4px solid var(--y); padding: 2rem 2.5
   <section id="gallery" class="sec white">
     <p class="sec-eyebrow reveal stamp">09 — GALLERY</p>
     <h2 class="sec-heading char-heading reveal">ギャラリー</h2>
-    <p style="font-size:0.78rem;color:rgba(0,0,0,0.45);margin-bottom:0.8rem;">エントリー動画のギャラリーは審査期間後に公開予定です。</p>
-    <div class="gallery-grid reveal fly-l">
-      <div class="gallery-cell"><div class="gallery-cell-inner"><div class="gallery-cell-icon">▶</div><div class="gallery-cell-lbl">COMING SOON</div></div></div>
-      <div class="gallery-cell"><div class="gallery-cell-inner"><div class="gallery-cell-icon">▶</div><div class="gallery-cell-lbl">COMING SOON</div></div></div>
-      <div class="gallery-cell"><div class="gallery-cell-inner"><div class="gallery-cell-icon">▶</div><div class="gallery-cell-lbl">COMING SOON</div></div></div>
-      <div class="gallery-cell"><div class="gallery-cell-inner"><div class="gallery-cell-icon">▶</div><div class="gallery-cell-lbl">COMING SOON</div></div></div>
-      <div class="gallery-cell"><div class="gallery-cell-inner"><div class="gallery-cell-icon">▶</div><div class="gallery-cell-lbl">COMING SOON</div></div></div>
-      <div class="gallery-cell"><div class="gallery-cell-inner"><div class="gallery-cell-icon">▶</div><div class="gallery-cell-lbl">COMING SOON</div></div></div>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal zoom" data-idx="0"><img src="ギャラリー_1.jpg" alt="gallery 1" loading="lazy"></div>
+      <div class="gallery-item reveal zoom" data-idx="1"><img src="ギャラリー_2.jpg" alt="gallery 2" loading="lazy"></div>
+      <div class="gallery-item reveal zoom" data-idx="2"><img src="ギャラリー_3.jpg" alt="gallery 3" loading="lazy"></div>
+      <div class="gallery-item reveal zoom" data-idx="3"><img src="ギャラリー_4.jpg" alt="gallery 4" loading="lazy"></div>
+      <div class="gallery-item reveal zoom" data-idx="4"><img src="ギャラリー_5.jpg" alt="gallery 5" loading="lazy"></div>
+      <div class="gallery-item reveal zoom" data-idx="5"><img src="ギャラリー_6.jpg" alt="gallery 6" loading="lazy"></div>
+      <div class="gallery-item reveal zoom" data-idx="6"><img src="ギャラリー_7.jpg" alt="gallery 7" loading="lazy"></div>
+      <div class="gallery-item reveal zoom" data-idx="7"><img src="ギャラリー_8.jpg" alt="gallery 8" loading="lazy"></div>
+      <div class="gallery-item reveal zoom" data-idx="8"><img src="ギャラリー_9.jpg" alt="gallery 9" loading="lazy"></div>
     </div>
   </section>
+
+  <!-- ライトボックス -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-close" id="lb-close">✕</div>
+    <div class="lightbox-nav lightbox-prev" id="lb-prev">‹</div>
+    <img class="lightbox-img" id="lb-img" src="" alt="">
+    <div class="lightbox-nav lightbox-next" id="lb-next">›</div>
+    <div class="lightbox-counter" id="lb-counter"></div>
+  </div>
 
   <div class="stripe"></div>
 
@@ -1039,5 +1064,39 @@ mainEl.addEventListener('scroll', () => {
 });
 </script>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script>
+/* ── Lightbox ── */
+const galleryImgs = [
+  'ギャラリー_1.jpg','ギャラリー_2.jpg','ギャラリー_3.jpg',
+  'ギャラリー_4.jpg','ギャラリー_5.jpg','ギャラリー_6.jpg',
+  'ギャラリー_7.jpg','ギャラリー_8.jpg','ギャラリー_9.jpg'
+];
+let lbIdx = 0;
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lb-img');
+const lbCounter = document.getElementById('lb-counter');
+
+function lbShow(idx) {
+  lbIdx = (idx + galleryImgs.length) % galleryImgs.length;
+  lbImg.src = galleryImgs[lbIdx];
+  lbCounter.textContent = (lbIdx + 1) + ' / ' + galleryImgs.length;
+  lb.classList.add('open');
+}
+function lbClose() { lb.classList.remove('open'); }
+
+document.querySelectorAll('.gallery-item').forEach(el => {
+  el.addEventListener('click', () => lbShow(+el.dataset.idx));
+});
+document.getElementById('lb-close').addEventListener('click', lbClose);
+document.getElementById('lb-prev').addEventListener('click', () => lbShow(lbIdx - 1));
+document.getElementById('lb-next').addEventListener('click', () => lbShow(lbIdx + 1));
+lb.addEventListener('click', e => { if (e.target === lb) lbClose(); });
+document.addEventListener('keydown', e => {
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'ArrowLeft') lbShow(lbIdx - 1);
+  if (e.key === 'ArrowRight') lbShow(lbIdx + 1);
+  if (e.key === 'Escape') lbClose();
+});
+</script>
 </body>
 </html>
