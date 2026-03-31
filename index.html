@@ -5,361 +5,818 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PENguin Creator's Spin 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@400;700;900&family=Poppins:wght@900&display=swap" rel="stylesheet">
 <style>
-:root{--y:#FFE600;--c:#00C8E6;--k:#111111;--w:#ffffff;--r:#FF2D2D;}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{background:var(--y);color:var(--k);font-family:'Noto Sans JP',sans-serif;overflow-x:hidden;}
-.bg-text{position:absolute;font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,12vw,130px);color:rgba(0,0,0,0.07);letter-spacing:0.05em;white-space:nowrap;pointer-events:none;user-select:none;line-height:1;}
-nav{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--k);display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:56px;border-bottom:4px solid var(--c);}
-.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.08em;color:var(--y);}
-.nav-links{display:flex;gap:1.8rem;list-style:none;}
-.nav-links a{color:var(--w);text-decoration:none;font-size:0.72rem;font-weight:700;letter-spacing:0.15em;transition:color 0.15s;}
-.nav-links a:hover{color:var(--c);}
-.nav-entry{background:var(--c);color:var(--k);font-size:0.72rem;font-weight:900;letter-spacing:0.1em;padding:0.4rem 1.2rem;text-decoration:none;transition:background 0.15s;}
-.nav-entry:hover{background:var(--y);}
-#hero{min-height:100vh;background:var(--y);position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:7rem 2rem 4rem;text-align:center;}
-.hero-bg1{top:0;left:-2%;transform:rotate(-3deg);}
-.hero-bg2{top:16%;left:-3%;transform:rotate(-3deg);}
-.hero-bg3{top:32%;left:-1%;transform:rotate(-3deg);}
-.hero-bg4{top:48%;left:-2%;transform:rotate(-3deg);}
-.hero-bg5{top:64%;left:-3%;transform:rotate(-3deg);}
-.hero-bg6{top:80%;left:-1%;transform:rotate(-3deg);}
-.hero-tag{display:inline-block;background:var(--k);color:var(--y);font-size:0.7rem;font-weight:700;letter-spacing:0.2em;padding:0.3rem 1.2rem;margin-bottom:1.5rem;transform:rotate(-1deg);opacity:0;animation:popIn 0.4s 0.2s cubic-bezier(0.34,1.56,0.64,1) forwards;}
-.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,18vw,13rem);line-height:0.88;letter-spacing:0.01em;color:var(--k);position:relative;z-index:2;opacity:0;animation:popIn 0.5s 0.35s cubic-bezier(0.34,1.56,0.64,1) forwards;}
-.hero-title .cy{color:var(--c);-webkit-text-stroke:3px var(--k);}
-.hero-title .out{-webkit-text-stroke:4px var(--k);color:transparent;}
-.hero-theme-wrap{margin:1rem 0 1.5rem;opacity:0;animation:popIn 0.5s 0.55s cubic-bezier(0.34,1.56,0.64,1) forwards;}
-.theme-label{font-size:0.75rem;font-weight:700;letter-spacing:0.2em;background:var(--k);color:var(--w);display:inline-block;padding:0.15rem 0.8rem;margin-bottom:0.4rem;}
-.hero-theme{font-family:'Noto Sans JP',sans-serif;font-size:clamp(1.5rem,5vw,3rem);font-weight:900;letter-spacing:0.05em;color:var(--k);background:var(--c);display:inline-block;padding:0.1rem 1.2rem;transform:rotate(-1.5deg);}
-.hero-prize-wrap{display:flex;align-items:center;justify-content:center;gap:1.5rem;margin:1.5rem 0 2.5rem;opacity:0;animation:popIn 0.5s 0.65s cubic-bezier(0.34,1.56,0.64,1) forwards;}
-.prize-label{font-size:0.75rem;font-weight:700;letter-spacing:0.15em;background:var(--k);color:var(--w);padding:0.15rem 0.8rem;}
-.prize-amount{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,7vw,5rem);color:var(--r);-webkit-text-stroke:2px var(--k);line-height:1;letter-spacing:0.03em;}
-.hero-cta{display:inline-block;background:var(--k);color:var(--y);font-size:1rem;font-weight:900;letter-spacing:0.15em;padding:1rem 3.5rem;text-decoration:none;border:3px solid var(--k);transition:transform 0.15s,box-shadow 0.15s;transform:rotate(0.5deg);opacity:0;animation:popIn 0.5s 0.8s cubic-bezier(0.34,1.56,0.64,1) forwards;}
-.hero-cta:hover{transform:rotate(0.5deg) translateY(-4px);box-shadow:6px 6px 0 rgba(0,0,0,0.3);}
-.hero-date{margin-top:1.8rem;font-size:0.78rem;font-weight:700;letter-spacing:0.1em;opacity:0;animation:fadeUp 0.5s 1s forwards;}
-.stripe{height:20px;background:repeating-linear-gradient(-45deg,var(--k) 0,var(--k) 10px,var(--c) 10px,var(--c) 20px);}
-.sec{padding:6rem 2rem;position:relative;overflow:hidden;}
-.sec.dark{background:var(--k);color:var(--w);}
-.sec.cyan-bg{background:var(--c);color:var(--k);}
-.container{max-width:1080px;margin:0 auto;position:relative;z-index:2;}
-.sec-label{font-size:0.7rem;font-weight:700;letter-spacing:0.25em;display:inline-block;padding:0.2rem 0.8rem;margin-bottom:1rem;}
-.sec.dark .sec-label{background:var(--c);color:var(--k);}
-.sec:not(.dark):not(.cyan-bg) .sec-label{background:var(--k);color:var(--y);}
-.sec.cyan-bg .sec-label{background:var(--k);color:var(--c);}
-.sec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,8vw,6rem);line-height:0.9;letter-spacing:0.03em;margin-bottom:2.5rem;}
-.sec.dark .sec-title{color:var(--y);}
-.sec:not(.dark):not(.cyan-bg) .sec-title,.sec.cyan-bg .sec-title{color:var(--k);}
-.ov-grid{display:grid;grid-template-columns:repeat(3,1fr);border:3px solid var(--y);margin-top:2rem;}
-.ov-card{padding:2rem 1.5rem;border:1px solid rgba(255,230,0,0.15);transition:background 0.15s;}
-.ov-card:hover{background:rgba(255,230,0,0.05);}
-.ov-num{font-family:'Bebas Neue',sans-serif;font-size:4rem;color:rgba(255,230,0,0.2);line-height:1;margin-bottom:0.5rem;}
-.ov-label{font-size:0.65rem;font-weight:700;letter-spacing:0.2em;color:var(--c);margin-bottom:0.4rem;}
-.ov-value{font-size:1rem;font-weight:700;color:var(--w);}
-.rules-wrap{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:2rem;}
-.rule-block h3{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:0.05em;color:var(--c);border-bottom:3px solid var(--c);padding-bottom:0.5rem;margin-bottom:1.2rem;}
-.rule-item{display:flex;gap:0.8rem;margin-bottom:1rem;align-items:flex-start;}
-.rule-dot{width:8px;height:8px;background:var(--y);flex-shrink:0;margin-top:0.55rem;transform:rotate(45deg);}
-.rule-item p{font-size:0.9rem;line-height:1.65;color:rgba(255,255,255,0.85);}
-.rule-item strong{color:var(--y);}
-.caution{background:rgba(255,45,45,0.12);border:2px solid var(--r);padding:1rem 1.2rem;margin-top:1.5rem;}
-.caution p{font-size:0.85rem;color:rgba(255,100,100,0.95);line-height:1.65;}
-.crit-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem;}
-.crit-card{background:var(--w);border:3px solid var(--k);padding:2rem;box-shadow:6px 6px 0 var(--k);}
-.crit-card.minus{background:var(--k);color:var(--w);border-color:var(--r);box-shadow:6px 6px 0 var(--r);}
-.crit-head{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:0.05em;margin-bottom:1.2rem;display:flex;align-items:center;gap:0.6rem;}
-.crit-card.plus .crit-head{color:var(--k);}
-.crit-card.minus .crit-head{color:var(--r);}
-.crit-sign{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;line-height:1;}
-.crit-list{list-style:none;display:flex;flex-direction:column;gap:0.8rem;}
-.crit-list li{font-size:0.88rem;line-height:1.55;padding-left:1rem;border-left:3px solid;}
-.crit-card.plus .crit-list li{border-color:var(--k);color:var(--k);}
-.crit-card.minus .crit-list li{border-color:var(--r);color:rgba(255,255,255,0.85);}
-.judges-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem;}
-.judge-card{background:var(--w);border:3px solid var(--k);padding:2rem 1.5rem;text-align:center;box-shadow:5px 5px 0 var(--k);transition:transform 0.15s,box-shadow 0.15s;}
-.judge-card:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 var(--k);}
-.judge-avatar{width:90px;height:90px;border-radius:50%;background:var(--c);border:3px solid var(--k);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--k);}
-.judge-name{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:0.05em;color:var(--k);margin-bottom:0.4rem;}
-.judge-role{font-size:0.68rem;font-weight:700;letter-spacing:0.15em;background:var(--k);color:var(--y);display:inline-block;padding:0.15rem 0.8rem;}
-#schedule .tl-item{display:grid;grid-template-columns:200px 1fr;gap:2rem;align-items:start;padding-bottom:2.5rem;position:relative;}
-#schedule .tl-item::before{content:'';position:absolute;left:198px;top:14px;bottom:0;width:3px;background:var(--k);}
-#schedule .tl-item:last-child::before{display:none;}
-#schedule .tl-left{text-align:right;}
-#schedule .tl-date{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.05em;color:var(--k);line-height:1;}
-#schedule .tl-dot{width:16px;height:16px;background:var(--k);border:3px solid var(--y);position:absolute;left:191px;top:8px;transform:rotate(45deg);}
-#schedule .tl-item.active .tl-dot{background:var(--c);border-color:var(--k);}
-#schedule .tl-right{padding-left:2rem;}
-#schedule .tl-title{font-size:1.1rem;font-weight:900;margin-bottom:0.3rem;}
-#schedule .tl-desc{font-size:0.85rem;color:rgba(0,0,0,0.6);}
-.entry-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:2rem;}
-.steps{list-style:none;display:flex;flex-direction:column;gap:1.5rem;}
-.step{display:flex;gap:1.5rem;align-items:flex-start;padding:1.5rem;border:2px solid rgba(255,255,255,0.1);transition:border-color 0.2s;}
-.step:hover{border-color:var(--c);}
-.step-n{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:rgba(255,230,0,0.2);line-height:1;flex-shrink:0;}
-.step-body strong{display:block;font-size:1rem;font-weight:700;color:var(--w);margin-bottom:0.3rem;}
-.step-body p{font-size:0.85rem;color:rgba(255,255,255,0.55);line-height:1.6;}
-.btn-cta{display:inline-block;margin-top:2rem;background:var(--c);color:var(--k);font-size:0.9rem;font-weight:900;letter-spacing:0.12em;padding:1rem 2.5rem;text-decoration:none;border:3px solid var(--c);box-shadow:4px 4px 0 var(--c);transition:transform 0.15s,box-shadow 0.15s;}
-.btn-cta:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--c);}
-.agree-box{border:2px solid rgba(255,255,255,0.15);padding:1.8rem;}
-.agree-title{font-size:0.68rem;font-weight:700;letter-spacing:0.2em;color:var(--c);margin-bottom:1.2rem;}
-.agree-list{list-style:none;display:flex;flex-direction:column;gap:0.9rem;}
-.agree-list li{font-size:0.82rem;color:rgba(255,255,255,0.6);line-height:1.6;padding-left:1rem;border-left:2px solid rgba(255,200,0,0.3);}
-footer{background:var(--k);border-top:4px solid var(--y);padding:2.5rem 2rem;}
-.footer-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
-.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.05em;color:var(--y);}
-.footer-links{display:flex;gap:2rem;list-style:none;}
-.footer-links a{font-size:0.72rem;font-weight:700;letter-spacing:0.12em;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.15s;}
-.footer-links a:hover{color:var(--c);}
-.footer-copy{max-width:1080px;margin:1.5rem auto 0;font-size:0.65rem;letter-spacing:0.1em;color:rgba(255,255,255,0.3);text-align:center;}
-@keyframes popIn{from{opacity:0;transform:scale(0.85) translateY(20px);}to{opacity:1;transform:scale(1) translateY(0);}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
-.reveal.visible{opacity:1;transform:none;}
-@media(max-width:768px){
-  nav{padding:0 1.2rem;}
-  .nav-links{display:none;}
-  .ov-grid{grid-template-columns:1fr 1fr;}
-  .rules-wrap,.crit-grid,.judges-grid,.entry-inner{grid-template-columns:1fr;}
-  #schedule .tl-item{grid-template-columns:1fr;gap:0.5rem;}
-  #schedule .tl-item::before,#schedule .tl-dot{display:none;}
-  #schedule .tl-left{text-align:left;}
-  #schedule .tl-right{padding-left:0;}
-  .sec{padding:4rem 1.5rem;}
+:root {
+  --y:  #FFE600;
+  --c:  #2250b5;
+  --k:  #111111;
+  --w:  #ffffff;
+  --r:  #FF2D2D;
+  --strip-w:   4px;
+  --strip-ci-w: 72px;
+  --panel-l-w: 350px;
+  --panel-r-w: 420px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; overflow: hidden; font-family: 'Noto Sans JP', sans-serif; background: var(--w); }
+
+/* ─── STRIPS ─── */
+.strip { position: fixed; top: 0; bottom: 0; width: var(--strip-w); z-index: 200; overflow: hidden; display: flex; align-items: stretch; }
+.strip-l { left: 0;  background: var(--k); }
+.strip-r { right: 0; background: var(--c); border-left: 3px solid var(--k); }
+.strip-inner { display: flex; flex-direction: column; width: 100%; align-items: center; animation: stripScroll 18s linear infinite; }
+.strip-r .strip-inner { animation-direction: reverse; }
+.strip-inner span { font-family: 'Bebas Neue', sans-serif; font-size: 0.95rem; letter-spacing: 0.28em; writing-mode: vertical-rl; white-space: nowrap; flex-shrink: 0; padding: 1.4rem 0; }
+.strip-l span { color: var(--y); }
+.strip-r span { color: var(--k); }
+@keyframes stripScroll { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+
+/* ─── LEFT PANEL ─── */
+.panel-l {
+  position: fixed; left: var(--strip-w); top: 0; bottom: 0;
+  width: var(--panel-l-w); background: var(--c); z-index: 100;
+  display: flex; flex-direction: column;
+  padding: 2.5rem 2rem 2rem; overflow: hidden;
+}
+.pl-logo { font-family: 'Bebas Neue', sans-serif; font-size: 0.8rem; letter-spacing: 0.18em; color: rgba(255,255,255,0.5); margin-bottom: 1.5rem; }
+.pl-tag { display: inline-block; background: var(--y); color: var(--k); font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em; padding: 0.2rem 0.8rem; margin-bottom: 1rem; transform: rotate(-1deg); }
+.pl-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.4rem, 5vw, 4.8rem); line-height: 0.85; letter-spacing: 0.02em; color: var(--w); margin-bottom: 1.8rem; }
+.pl-title .cy { color: var(--y); -webkit-text-stroke: 0; text-shadow: 3px 3px 0 rgba(0,0,0,0.4); }
+.pl-title .out { -webkit-text-stroke: 3px var(--y); color: transparent; }
+.pl-theme { border-left: 5px solid var(--y); padding-left: 0.9rem; margin-bottom: 1.5rem; }
+.pl-theme-lbl { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.22em; color: rgba(255,255,255,0.5); margin-bottom: 0.2rem; }
+.pl-theme-txt { font-size: 1rem; font-weight: 900; color: var(--w); }
+.pl-prize { margin-bottom: auto; }
+.pl-prize-lbl { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.15em; color: rgba(255,255,255,0.5); margin-bottom: 0.3rem; }
+.pl-prize-row { display: flex; flex-direction: column; gap: 0.1rem; }
+.pl-prize-item { display: flex; align-items: baseline; gap: 0.5rem; }
+.pl-prize-rank { font-family: 'Bebas Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; background: var(--y); color: var(--k); padding: 0 0.4rem; }
+.pl-prize-amt { font-family: 'Bebas Neue', sans-serif; font-size: 1.9rem; color: var(--y); line-height: 1; }
+.pl-prize-amt.top { font-size: 2.8rem; }
+.pl-deco { font-family: 'Bebas Neue', sans-serif; font-size: 6rem; line-height: 1; color: rgba(255,255,255,0.07); letter-spacing: -0.02em; margin: 0.8rem 0; overflow: hidden; flex-shrink: 0; }
+.pl-date { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); margin-bottom: 1rem; }
+.pl-scroll { display: flex; flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+.pl-scroll-lbl { font-family: 'Bebas Neue', sans-serif; font-size: 0.68rem; letter-spacing: 0.2em; color: var(--w); }
+.pl-scroll-bar { width: 2px; height: 34px; background: linear-gradient(to bottom, var(--w) 0%, transparent 100%); animation: scrollDown 1.6s ease-in-out infinite; }
+@keyframes scrollDown { 0% { transform: scaleY(1) translateY(0); opacity: 1; } 100% { transform: scaleY(0.2) translateY(12px); opacity: 0; } }
+
+/* ─── RIGHT PANEL ─── */
+.panel-r { position: fixed; right: var(--strip-w); top: 0; bottom: 0; width: var(--panel-r-w); background: var(--c); z-index: 100; overflow: hidden; }
+.pr-bg { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; overflow: hidden; }
+.pr-bg-txt { font-family: 'Bebas Neue', sans-serif; font-size: 7rem; line-height: 0.85; letter-spacing: 0.01em; color: rgba(255,255,255,0.06); writing-mode: vertical-rl; white-space: nowrap; }
+.pr-content { position: relative; z-index: 2; display: flex; flex-direction: column; height: 100%; padding: 2.5rem 2rem; }
+.pr-nav { display: flex; gap: 2px; margin-bottom: 2rem; }
+.pr-nav a { background: transparent; color: var(--w); font-family: 'Bebas Neue', sans-serif; font-size: 0.88rem; letter-spacing: 0.1em; padding: 0.35rem 1rem; text-decoration: none; border: 2px solid rgba(255,255,255,0.4); font-weight: 900; transition: background 0.12s, color 0.12s, border-color 0.12s; }
+.pr-nav a:hover, .pr-nav a.active { background: var(--y); color: var(--k); border-color: var(--y); }
+.pr-sections { list-style: none; display: flex; flex-direction: column; gap: 0; }
+.pr-sections li a { display: flex; align-items: center; gap: 1rem; text-decoration: none; color: var(--w); padding: 0.7rem 0; border-bottom: 1px solid rgba(255,255,255,0.15); transition: background 0.1s; }
+.pr-sections li a:hover { background: rgba(255,255,255,0.08); }
+.pr-item-left { display: flex; flex-direction: column; align-items: flex-end; width: 46px; flex-shrink: 0; }
+.pr-item-sec { font-family: 'Bebas Neue', sans-serif; font-size: 0.55rem; letter-spacing: 0.08em; color: rgba(255,255,255,0.4); font-style: italic; line-height: 1; }
+.pr-item-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.3rem; line-height: 0.9; color: var(--y); font-style: italic; }
+.pr-item-lbl { font-size: 0.82rem; font-weight: 700; line-height: 1.3; color: var(--w); }
+
+/* ─── CENTER INNER STRIPS ─── */
+.strip-ci {
+  position: fixed; top: 0; bottom: 0;
+  width: var(--strip-ci-w); z-index: 150;
+  overflow: hidden; display: flex; align-items: stretch;
+}
+.strip-ci-l {
+  left: calc(var(--strip-w) + var(--panel-l-w));
+  background: var(--c);
+}
+.strip-ci-r {
+  right: calc(var(--strip-w) + var(--panel-r-w));
+  background: var(--c);
+}
+.strip-ci .strip-inner span {
+  font-family: 'Poppins', Impact, sans-serif;
+  font-weight: 900;
+  font-size: 3.2rem;
+  letter-spacing: 0.04em;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--y);
+  padding: 2rem 0;
+}
+.strip-ci-r .strip-inner { animation-direction: reverse; }
+
+/* ─── MAIN SCROLL ─── */
+.main { position: fixed; left: calc(var(--strip-w) + var(--panel-l-w) + var(--strip-ci-w)); right: calc(var(--strip-w) + var(--panel-r-w) + var(--strip-ci-w)); top: 0; bottom: 0; overflow-y: scroll; background: var(--w); }
+
+/* ─── TICKER ─── */
+.ticker { overflow: hidden; height: 34px; display: flex; align-items: center; flex-shrink: 0; }
+.ticker.dark  { background: var(--k); border-top: 2px solid var(--y); border-bottom: 2px solid var(--y); }
+.ticker.yellow{ background: var(--y); border-top: 2px solid var(--k); border-bottom: 2px solid var(--k); }
+.ticker.cyan  { background: var(--c); border-top: 2px solid var(--k); border-bottom: 2px solid var(--k); }
+.ticker-track { display: flex; white-space: nowrap; animation: tickerScroll 22s linear infinite; }
+.ticker-track span { font-family: 'Bebas Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.2em; padding-right: 3rem; }
+.ticker.dark   .ticker-track span { color: var(--y); }
+.ticker.yellow .ticker-track span { color: var(--k); }
+.ticker.cyan   .ticker-track span { color: var(--k); }
+@keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ─── BANNER IMAGE ─── */
+.banner-img { position: relative; height: 58vh; min-height: 300px; background: var(--y); overflow: hidden; border-bottom: 4px solid var(--k); display: flex; align-items: flex-end; }
+.banner-img-bg {
+  position: absolute; inset: 0;
+  background:
+    repeating-linear-gradient(45deg, rgba(0,0,0,0.04) 0, rgba(0,0,0,0.04) 1px, transparent 1px, transparent 30px),
+    repeating-linear-gradient(-45deg, rgba(0,0,0,0.04) 0, rgba(0,0,0,0.04) 1px, transparent 1px, transparent 30px),
+    var(--y);
+  display: flex; align-items: center; justify-content: center;
+}
+.banner-img-deco { font-family: 'Bebas Neue', sans-serif; font-size: clamp(8rem, 20vw, 18rem); color: rgba(0,0,0,0.07); line-height: 0.9; letter-spacing: -0.02em; user-select: none; }
+.banner-img-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); text-align: center; }
+.banner-img-placeholder-lbl { font-family: 'Bebas Neue', sans-serif; font-size: 0.7rem; letter-spacing: 0.35em; color: rgba(0,0,0,0.3); border: 2px solid rgba(0,0,0,0.2); padding: 0.3rem 1.2rem; display: inline-block; }
+.banner-img-overlay { position: relative; z-index: 2; width: 100%; padding: 0 2rem 1.5rem; background: linear-gradient(to top, rgba(255,230,0,0.95) 0%, transparent 100%); }
+.banner-img-date { font-family: 'Bebas Neue', sans-serif; font-size: 0.72rem; letter-spacing: 0.2em; color: var(--k); opacity: 0.7; margin-bottom: 0.3rem; }
+.banner-img-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.6rem, 3vw, 2.5rem); color: var(--k); letter-spacing: 0.02em; line-height: 0.9; }
+
+/* ─── CATCH (キャッチコピー) ─── */
+.catch { position: relative; background: var(--w); overflow: hidden; padding: 4rem 2.5rem 3.5rem; border-bottom: 4px solid var(--k); }
+.catch-bg-txt { position: absolute; top: -10%; left: -3%; font-family: 'Bebas Neue', sans-serif; font-size: clamp(90px, 18vw, 160px); color: rgba(0,200,230,0.1); line-height: 0.85; pointer-events: none; white-space: nowrap; transform: rotate(-4deg); }
+.catch-eyebrow { display: inline-flex; align-items: center; gap: 0.6rem; background: var(--k); color: var(--y); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.18em; padding: 0.3rem 1rem; margin-bottom: 1.6rem; }
+.catch-eyebrow em { color: var(--c); font-style: normal; }
+.catch-heading { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 3.4vw, 3.2rem); line-height: 1.0; letter-spacing: 0.01em; color: var(--k); margin-bottom: 1.5rem; position: relative; z-index: 1; }
+.catch-heading .ac { color: var(--y); -webkit-text-stroke: 2px var(--k); }
+.catch-heading .ol { -webkit-text-stroke: 4px var(--k); color: transparent; }
+.catch-body { font-size: 0.88rem; font-weight: 700; line-height: 1.9; color: var(--k); position: relative; z-index: 1; margin-bottom: 1.8rem; }
+.catch-body strong { background: var(--y); padding: 0 0.2rem; }
+.catch-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; position: relative; z-index: 1; }
+.catch-tag { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; padding: 0.3rem 0.9rem; border: 2px solid var(--k); }
+.catch-tag.hl { background: var(--c); color: var(--w); }
+.catch-tag.hl2 { background: var(--y); }
+
+/* ─── SECTIONS ─── */
+.sec { padding: 4rem 2.5rem; position: relative; overflow: hidden; }
+.sec.white  { background: var(--w); color: var(--k); }
+.sec.yellow { background: var(--y); color: var(--k); }
+.sec.cyan   { background: var(--c); color: var(--w); }
+.sec.dark   { background: var(--k); color: var(--w); }
+
+.sec-eyebrow { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.25em; display: inline-block; padding: 0.2rem 0.7rem; margin-bottom: 0.8rem; border: 2px solid var(--k); }
+.white .sec-eyebrow  { background: var(--k); color: var(--y); border-color: var(--k); }
+.yellow .sec-eyebrow { background: var(--k); color: var(--y); border-color: var(--k); }
+.cyan .sec-eyebrow   { background: var(--y); color: var(--k); border-color: var(--y); }
+.dark .sec-eyebrow   { background: var(--c); color: var(--k); border-color: var(--c); }
+
+.sec-heading { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.8rem, 5vw, 4.5rem); line-height: 0.88; letter-spacing: 0.02em; margin-bottom: 2rem; }
+.white .sec-heading, .yellow .sec-heading { color: var(--k); }
+.cyan .sec-heading { color: var(--w); }
+.dark  .sec-heading { color: var(--y); }
+
+.stripe { height: 16px; background: repeating-linear-gradient(-45deg, var(--k) 0, var(--k) 8px, var(--y) 8px, var(--y) 16px); }
+.stripe.cyan-stripe { background: repeating-linear-gradient(-45deg, var(--k) 0, var(--k) 8px, var(--c) 8px, var(--c) 16px); }
+
+/* OVERVIEW */
+.ov-grid { display: grid; grid-template-columns: 1fr 1fr; border: 3px solid var(--k); margin-top: 1.5rem; }
+.ov-card { padding: 1.4rem 1.1rem; border: 1px solid rgba(0,0,0,0.12); transition: background 0.15s; }
+.ov-card:hover { background: rgba(255,230,0,0.3); }
+.ov-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.8rem; color: rgba(0,0,0,0.08); line-height: 1; margin-bottom: 0.3rem; }
+.ov-lbl { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.22em; color: rgba(0,0,0,0.45); margin-bottom: 0.2rem; }
+.ov-val { font-size: 0.9rem; font-weight: 900; color: var(--k); }
+
+/* PRIZE */
+.prize-grid { display: grid; grid-template-columns: 1fr; gap: 0.8rem; margin-top: 1.5rem; }
+.prize-card { display: flex; align-items: center; gap: 1.2rem; padding: 1.2rem 1.4rem; border: 3px solid var(--k); box-shadow: 5px 5px 0 var(--k); background: var(--w); transition: transform 0.15s; }
+.prize-card:hover { transform: translate(-2px,-2px); }
+.prize-card.gold   { background: var(--y); }
+.prize-card.silver { background: #e8e8e8; }
+.prize-card.bronze { background: #f5e6d3; }
+.prize-rank { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; line-height: 1; color: var(--k); flex-shrink: 0; width: 60px; font-style: italic; }
+.prize-title { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; color: rgba(0,0,0,0.5); margin-bottom: 0.2rem; }
+.prize-amount { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--r); line-height: 1; }
+
+/* CRITERIA */
+.crit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+.crit-item { padding: 1.4rem; border: 3px solid var(--k); background: var(--w); box-shadow: 4px 4px 0 var(--k); }
+.crit-num  { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--y); -webkit-text-stroke: 2px var(--k); line-height: 1; margin-bottom: 0.4rem; }
+.crit-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.05em; color: var(--k); margin-bottom: 0.5rem; }
+.crit-desc { font-size: 0.78rem; line-height: 1.6; color: rgba(0,0,0,0.7); }
+.crit-minus { margin-top: 1.5rem; background: rgba(255,45,45,0.06); border: 2px solid var(--r); padding: 1.2rem 1.5rem; }
+.crit-minus-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; color: var(--r); margin-bottom: 0.8rem; }
+.crit-minus-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.crit-minus-list li { font-size: 0.8rem; line-height: 1.55; padding-left: 0.8rem; border-left: 2px solid var(--r); color: rgba(0,0,0,0.75); }
+
+/* RULES */
+.rule-h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 0.05em; color: var(--w); border-bottom: 3px solid var(--y); padding-bottom: 0.3rem; margin: 1.8rem 0 1rem; }
+.rule-item { display: flex; gap: 0.6rem; margin-bottom: 0.7rem; align-items: flex-start; }
+.rule-dot { width: 7px; height: 7px; background: var(--y); flex-shrink: 0; margin-top: 0.48rem; transform: rotate(45deg); }
+.rule-item p { font-size: 0.84rem; line-height: 1.65; color: rgba(255,255,255,0.85); }
+.rule-item strong { background: var(--y); padding: 0 0.2rem; color: var(--k); }
+.caution { background: rgba(255,45,45,0.08); border: 2px solid var(--r); padding: 0.8rem 1rem; margin-top: 1rem; }
+.caution p { font-size: 0.78rem; color: var(--r); line-height: 1.6; font-weight: 700; }
+
+/* JUDGES */
+.judges-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 1.5rem; }
+.judge-card { background: var(--w); border: 3px solid var(--k); padding: 1.1rem 1.4rem; box-shadow: 5px 5px 0 var(--k); display: flex; align-items: center; gap: 1.2rem; transition: transform 0.15s, box-shadow 0.15s; }
+.judge-card:hover { transform: translate(-2px,-2px); box-shadow: 7px 7px 0 var(--k); }
+.judge-avatar { width: 60px; height: 60px; border-radius: 50%; background: var(--c); border: 3px solid var(--k); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--k); flex-shrink: 0; }
+.judge-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 0.05em; color: var(--k); }
+.judge-role { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.15em; background: var(--k); color: var(--y); display: inline-block; padding: 0.1rem 0.6rem; margin-top: 0.2rem; }
+
+/* SCHEDULE */
+.tl-wrap { margin-top: 2rem; }
+.tl-item { display: flex; padding-bottom: 2rem; position: relative; }
+.tl-item::before { content: ''; position: absolute; left: 80px; top: 10px; bottom: 0; width: 3px; background: var(--k); }
+.tl-item:last-child::before { display: none; }
+.tl-date { font-family: 'Bebas Neue', sans-serif; font-size: 0.9rem; color: var(--k); width: 80px; text-align: right; flex-shrink: 0; line-height: 1.2; }
+.tl-dot { width: 14px; height: 14px; background: var(--k); position: absolute; left: 73px; top: 4px; transform: rotate(45deg); }
+.tl-item.active .tl-dot { background: var(--r); border: 2px solid var(--k); }
+.tl-right { padding-left: 32px; }
+.tl-title { font-size: 1rem; font-weight: 900; margin-bottom: 0.2rem; color: var(--k); }
+.tl-desc { font-size: 0.78rem; color: rgba(0,0,0,0.55); line-height: 1.5; }
+
+/* ENTRY */
+.steps { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1.5rem; }
+.step { display: flex; gap: 1.2rem; padding: 1.2rem; border: 3px solid var(--k); background: var(--w); box-shadow: 4px 4px 0 var(--k); transition: transform 0.15s; }
+.step:hover { transform: translate(-2px,-2px); }
+.step-n { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--y); -webkit-text-stroke: 2px var(--k); line-height: 1; flex-shrink: 0; }
+.step-body strong { display: block; font-size: 0.9rem; font-weight: 900; color: var(--k); margin-bottom: 0.3rem; }
+.step-body p { font-size: 0.8rem; color: rgba(0,0,0,0.6); line-height: 1.6; }
+.btn-cta { display: inline-block; margin-top: 1.5rem; background: var(--k); color: var(--y); font-size: 0.9rem; font-weight: 900; letter-spacing: 0.15em; padding: 1rem 2.5rem; text-decoration: none; border: 3px solid var(--k); box-shadow: 5px 5px 0 var(--c); transition: transform 0.15s, box-shadow 0.15s; }
+.btn-cta:hover { transform: translate(-3px,-3px); box-shadow: 8px 8px 0 var(--c); }
+.agree-box { border: 2px solid rgba(0,0,0,0.2); padding: 1.5rem; margin-top: 1.5rem; background: rgba(0,0,0,0.02); }
+.agree-title { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; color: rgba(0,0,0,0.5); margin-bottom: 1rem; }
+.agree-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+.agree-list li { font-size: 0.78rem; color: rgba(0,0,0,0.65); line-height: 1.6; padding-left: 0.9rem; border-left: 2px solid rgba(0,0,0,0.15); }
+
+/* FOOTER */
+footer { background: var(--k); border-top: 4px solid var(--y); padding: 2rem 2.5rem; }
+.footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 0.06em; color: var(--y); margin-bottom: 0.8rem; }
+.footer-links { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; margin-bottom: 1rem; }
+.footer-links a { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.15s; }
+.footer-links a:hover { color: var(--c); }
+.footer-copy { font-size: 0.6rem; letter-spacing: 0.08em; color: rgba(255,255,255,0.2); }
+
+/* ─── ANIMATIONS ─── */
+
+/* --- Entrance --- */
+@keyframes slamDown {
+  0%   { opacity:0; transform:translateY(-90px) scale(1.4) skewX(-8deg); }
+  45%  { opacity:1; transform:translateY(12px)  scale(0.92) skewX(2deg); }
+  65%  { transform:translateY(-6px) scale(1.04) skewX(-1deg); }
+  82%  { transform:translateY(3px) scale(0.99); }
+  100% { opacity:1; transform:translateY(0) scale(1) skewX(0); }
+}
+@keyframes popBig {
+  0%   { opacity:0; transform:scale(0.05) rotate(-25deg); }
+  50%  { opacity:1; transform:scale(1.2) rotate(6deg); }
+  70%  { transform:scale(0.92) rotate(-3deg); }
+  85%  { transform:scale(1.05) rotate(1deg); }
+  100% { opacity:1; transform:scale(1) rotate(0); }
+}
+@keyframes flyLeft {
+  0%   { opacity:0; transform:translateX(-130px) rotate(-12deg) skewY(5deg); }
+  55%  { opacity:1; transform:translateX(10px) rotate(2.5deg) skewY(-1deg); }
+  75%  { transform:translateX(-5px) rotate(-0.8deg); }
+  100% { opacity:1; transform:translateX(0) rotate(0) skewY(0); }
+}
+@keyframes flyRight {
+  0%   { opacity:0; transform:translateX(130px) rotate(12deg) skewY(-5deg); }
+  55%  { opacity:1; transform:translateX(-10px) rotate(-2.5deg) skewY(1deg); }
+  75%  { transform:translateX(5px) rotate(0.8deg); }
+  100% { opacity:1; transform:translateX(0) rotate(0) skewY(0); }
+}
+@keyframes zoomSpin {
+  0%   { opacity:0; transform:scale(0.1) rotate(-35deg) translateY(30px); }
+  50%  { opacity:1; transform:scale(1.15) rotate(6deg) translateY(-8px); }
+  72%  { transform:scale(0.94) rotate(-3deg) translateY(3px); }
+  88%  { transform:scale(1.04) rotate(1deg); }
+  100% { opacity:1; transform:scale(1) rotate(0) translateY(0); }
+}
+@keyframes stampIn {
+  0%   { opacity:0; transform:scale(2.2) rotate(10deg); filter:blur(6px); }
+  40%  { opacity:1; transform:scale(0.86) rotate(-4deg); filter:blur(0); }
+  62%  { transform:scale(1.07) rotate(2deg); }
+  82%  { transform:scale(0.97) rotate(-0.5deg); }
+  100% { opacity:1; transform:scale(1) rotate(0); }
+}
+
+/* --- Per-char --- */
+@keyframes charDrop {
+  0%   { opacity:0; transform:translateY(-70px) rotate(-15deg) scale(1.6); }
+  55%  { opacity:1; transform:translateY(7px) rotate(3deg) scale(0.92); }
+  75%  { transform:translateY(-4px) rotate(-1deg) scale(1.04); }
+  100% { opacity:1; transform:translateY(0) rotate(0) scale(1); }
+}
+
+/* --- Reveal classes (fire only after .active added by JS) --- */
+.reveal { opacity:0; }
+.reveal.active.slam  { animation:slamDown 0.62s cubic-bezier(0.2,1.3,0.4,1)   forwards; }
+.reveal.active.pop   { animation:popBig   0.55s cubic-bezier(0.34,1.56,0.64,1) forwards; }
+.reveal.active.fly-l { animation:flyLeft  0.55s cubic-bezier(0.22,1.2,0.36,1)  forwards; }
+.reveal.active.fly-r { animation:flyRight 0.55s cubic-bezier(0.22,1.2,0.36,1)  forwards; }
+.reveal.active.zoom  { animation:zoomSpin 0.58s cubic-bezier(0.34,1.56,0.64,1) forwards; }
+.reveal.active.stamp { animation:stampIn  0.52s cubic-bezier(0.34,1.2,0.64,1)  forwards; }
+
+/* Per-char */
+.char { display:inline-block; opacity:0; }
+.char.go { animation:charDrop 0.52s cubic-bezier(0.34,1.56,0.64,1) forwards; }
+
+/* --- Continuous --- */
+@keyframes pulseBig {
+  0%,100% { transform:scale(1); }
+  40%      { transform:scale(1.08); }
+  65%      { transform:scale(0.95); }
+}
+@keyframes floatY {
+  0%,100% { transform:translateY(0) rotate(-0.5deg); }
+  50%      { transform:translateY(-12px) rotate(0.5deg); }
+}
+@keyframes glowPulse {
+  0%,100% { box-shadow:5px 5px 0 var(--c); }
+  50%      { box-shadow:12px 12px 0 var(--c), 0 0 35px rgba(0,200,230,0.55); }
+}
+@keyframes prizeFlash {
+  0%,80%,100% { color:var(--r); transform:scale(1); }
+  90%          { color:var(--k); transform:scale(1.1); }
+}
+@keyframes wiggleCont {
+  0%,100% { transform:rotate(-2.5deg) scale(1); }
+  50%      { transform:rotate(2.5deg) scale(1.03); }
+}
+@keyframes borderDance {
+  0%,100% { border-color:var(--k); box-shadow:4px 4px 0 var(--k); }
+  50%      { border-color:var(--r); box-shadow:7px 7px 0 var(--r); }
+}
+@keyframes bgShift {
+  0%   { background-position:0 0; }
+  100% { background-position:40px 40px; }
+}
+.cont-pulse  { animation:pulseBig   1.8s ease-in-out infinite; }
+.cont-float  { animation:floatY     3.2s ease-in-out infinite; }
+.cont-glow   { animation:glowPulse  1.6s ease-in-out infinite; }
+.cont-prize  { animation:prizeFlash 2.8s ease-in-out infinite; }
+.cont-wiggle { animation:wiggleCont 1.8s ease-in-out infinite; }
+.cont-border { animation:borderDance 2.2s ease-in-out infinite; }
+
+
+/* ─── MOBILE ─── */
+@media (max-width: 960px) {
+  html, body { overflow: auto; height: auto; }
+  .strip, .strip-ci, .panel-l, .panel-r { display: none; }
+  .main { position: static; left: 0; right: 0; top: 0; bottom: 0; overflow-y: auto; }
+  .sec { padding: 3rem 1.5rem; }
+  .catch { padding: 3rem 1.5rem; }
+  .crit-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-logo">PCS '26</div>
-  <ul class="nav-links">
-    <li><a href="#overview">概要</a></li>
-    <li><a href="#rules">ルール</a></li>
-    <li><a href="#criteria">評価</a></li>
-    <li><a href="#judges">審査員</a></li>
-    <li><a href="#schedule">日程</a></li>
-    <li><a href="#entry">エントリー</a></li>
-  </ul>
-  <a href="#entry" class="nav-entry">ENTRY →</a>
-</nav>
+<!-- ─── LEFT STRIP (accent line) ─── -->
+<div class="strip strip-l"></div>
 
-<section id="hero">
-  <span class="bg-text hero-bg1">PEN SPINNING · JAPAN · 2026 · CREATOR · PEN SPINNING · JAPAN · 2026 ·</span>
-  <span class="bg-text hero-bg2">FIRST PENGUIN · CONTEST · CHALLENGE · FIRST PENGUIN · CONTEST · CHALLENGE ·</span>
-  <span class="bg-text hero-bg3">PEN SPINNING · JAPAN · 2026 · CREATOR · PEN SPINNING · JAPAN · 2026 ·</span>
-  <span class="bg-text hero-bg4">FIRST PENGUIN · CONTEST · CHALLENGE · FIRST PENGUIN · CONTEST · CHALLENGE ·</span>
-  <span class="bg-text hero-bg5">PEN SPINNING · JAPAN · 2026 · CREATOR · PEN SPINNING · JAPAN · 2026 ·</span>
-  <span class="bg-text hero-bg6">FIRST PENGUIN · CONTEST · CHALLENGE · FIRST PENGUIN · CONTEST · CHALLENGE ·</span>
-
-  <div class="hero-tag">JAPAN PEN SPINNING CONTEST 2026</div>
-  <h1 class="hero-title">
+<!-- ─── LEFT PANEL ─── -->
+<aside class="panel-l">
+  <div class="pl-logo">PENguin Creator's Spin 2026</div>
+  <span class="pl-tag">JAPAN PEN SPINNING CONTEST</span>
+  <h1 class="pl-title">
     <span class="out">PEN</span><span class="cy">guin</span><br>
     CREATOR'S<br>
     <span class="cy">SPIN</span>
   </h1>
-  <div class="hero-theme-wrap">
-    <div class="theme-label">THEME</div><br>
-    <span class="hero-theme">「 ファーストペンギン 」</span>
+  <div class="pl-theme">
+    <div class="pl-theme-lbl">THEME</div>
+    <div class="pl-theme-txt">「 ファーストペンギン 」</div>
   </div>
-  <div class="hero-prize-wrap">
-    <span class="prize-label">賞金総額</span>
-    <span class="prize-amount">¥30,000</span>
-  </div>
-  <a href="#entry" class="hero-cta">今すぐエントリーする</a>
-  <p class="hero-date">エントリー受付：2026.04.16 スタート｜動画提出締め切り：2026.05.11</p>
-</section>
-
-<div class="stripe"></div>
-
-<section id="overview" class="sec dark">
-  <div class="bg-text" style="top:10%;left:-2%;transform:rotate(-5deg);font-size:clamp(80px,15vw,160px);color:rgba(255,230,0,0.04);">OVERVIEW</div>
-  <div class="container">
-    <p class="sec-label reveal">01 — OVERVIEW</p>
-    <h2 class="sec-title reveal">大会概要</h2>
-    <div class="ov-grid reveal">
-      <div class="ov-card"><div class="ov-num">01</div><div class="ov-label">STYLE</div><div class="ov-value">動画コンテスト</div></div>
-      <div class="ov-card"><div class="ov-num">02</div><div class="ov-label">THEME</div><div class="ov-value">ファーストペンギン</div></div>
-      <div class="ov-card"><div class="ov-num">03</div><div class="ov-label">PRIZE</div><div class="ov-value">¥30,000</div></div>
-      <div class="ov-card"><div class="ov-num">04</div><div class="ov-label">LENGTH</div><div class="ov-value">45秒以内</div></div>
-      <div class="ov-card"><div class="ov-num">05</div><div class="ov-label">CRITERIA</div><div class="ov-value">技術 / 発想 / 表現</div></div>
-      <div class="ov-card"><div class="ov-num">06</div><div class="ov-label">PLATFORM</div><div class="ov-value">X / YouTube / Instagram</div></div>
+  <div class="pl-prize">
+    <div class="pl-prize-lbl">賞金</div>
+    <div class="pl-prize-row">
+      <div class="pl-prize-item"><span class="pl-prize-rank">1位</span><span class="pl-prize-amt top">¥50,000</span></div>
+      <div class="pl-prize-item"><span class="pl-prize-rank">2位</span><span class="pl-prize-amt">¥30,000</span></div>
+      <div class="pl-prize-item"><span class="pl-prize-rank">3位</span><span class="pl-prize-amt">¥10,000</span></div>
     </div>
   </div>
-</section>
-
-<div class="stripe"></div>
-
-<section id="rules" class="sec dark">
-  <div class="bg-text" style="top:5%;right:-5%;transform:rotate(5deg);font-size:clamp(80px,15vw,160px);color:rgba(0,200,230,0.05);">RULES</div>
-  <div class="container">
-    <p class="sec-label reveal">02 — RULES</p>
-    <h2 class="sec-title reveal">募集要項</h2>
-    <div class="rules-wrap">
-      <div class="rule-block reveal">
-        <h3>参加資格</h3>
-        <div class="rule-item"><div class="rule-dot"></div><p>日本のペンスピナーであること</p></div>
-        <div class="rule-item"><div class="rule-dot"></div><p>日本文化に深い関わりがあり日本語でのコミュニケーションが円滑に進められる方も参加OK</p></div>
-        <h3 style="margin-top:2rem;">ペンについて</h3>
-        <div class="rule-item"><div class="rule-dot"></div><p><strong>棒状のものであればなんでもOK。</strong>長さ・重さ・本数の制限なし</p></div>
-        <div class="rule-item"><div class="rule-dot"></div><p>ペンの選択も審査の評価対象になります</p></div>
-      </div>
-      <div class="rule-block reveal">
-        <h3>動画について</h3>
-        <div class="rule-item"><div class="rule-dot"></div><p><strong>本大会用に新規撮影した動画のみ。</strong>既出はNG</p></div>
-        <div class="rule-item"><div class="rule-dot"></div><p><strong>45秒以内</strong></p></div>
-        <div class="rule-item"><div class="rule-dot"></div><p>編集はトリミングと色調補正のみ。それ以外の編集は禁止</p></div>
-        <div class="rule-item"><div class="rule-dot"></div><p>審査環境で再生できない場合は再提出を求めることがあります</p></div>
-        <div class="caution"><p>期日までの対応がない場合や改善が見られない場合はその時点で失格となります。</p></div>
-      </div>
-    </div>
+  <div class="pl-deco">PCS</div>
+  <div class="pl-date">ENTRY: 2026.04.16 → DEADLINE: 2026.05.11</div>
+  <div class="pl-scroll">
+    <span class="pl-scroll-lbl">SCROLL DOWN</span>
+    <div class="pl-scroll-bar"></div>
   </div>
-</section>
+</aside>
 
-<div class="stripe"></div>
-
-<section id="criteria" class="sec cyan-bg">
-  <div class="bg-text" style="bottom:5%;left:-3%;transform:rotate(-3deg);font-size:clamp(80px,15vw,160px);color:rgba(0,0,0,0.07);">CRITERIA</div>
-  <div class="container">
-    <p class="sec-label reveal">03 — CRITERIA</p>
-    <h2 class="sec-title reveal">評価基準</h2>
-    <div class="crit-grid">
-      <div class="crit-card plus reveal">
-        <div class="crit-head"><span class="crit-sign">＋</span>評価される要素</div>
-        <ul class="crit-list">
-          <li>指遣い・回転速度・軌道の精度と美しさ</li>
-          <li>独自性のある発想・テーマへのアプローチ</li>
-          <li>ペン回しの歴史・文化への理解</li>
-          <li>ペンの選択と演出の一貫性</li>
-          <li>意図的な「崩し」による美しさ</li>
-        </ul>
-      </div>
-      <div class="crit-card minus reveal">
-        <div class="crit-head"><span class="crit-sign">－</span>減点対象</div>
-        <ul class="crit-list">
-          <li>意図のない指遣い・回転速度・軌道のブレ</li>
-          <li>極端に単調な構成（例：20秒間同じ技を繰り返す）</li>
-          <li>低画質・背景ノイズ等でペンや指の動きが見えにくい</li>
-        </ul>
-      </div>
-    </div>
+<!-- ─── RIGHT PANEL ─── -->
+<aside class="panel-r">
+  <div class="pr-bg">
+    <div class="pr-bg-txt">CREATOR'S SPIN 2026</div>
   </div>
-</section>
-
-<div class="stripe"></div>
-
-<section id="judges" class="sec" style="background:var(--y);">
-  <div class="bg-text" style="top:5%;right:-3%;transform:rotate(4deg);font-size:clamp(80px,15vw,160px);color:rgba(0,0,0,0.06);">JUDGES</div>
-  <div class="container">
-    <p class="sec-label reveal">04 — JUDGES</p>
-    <h2 class="sec-title reveal">審査員</h2>
-    <div class="judges-grid">
-      <div class="judge-card reveal">
-        <div class="judge-avatar">K</div>
-        <div class="judge-name">KAY</div>
-        <div class="judge-role">PEN SPINNER</div>
-      </div>
-      <div class="judge-card reveal">
-        <div class="judge-avatar">O</div>
-        <div class="judge-name">オモコロ</div>
-        <div class="judge-role">WEB MEDIA</div>
-      </div>
-      <div class="judge-card reveal">
-        <div class="judge-avatar">？</div>
-        <div class="judge-name">TBA</div>
-        <div class="judge-role">COMEDIAN</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="stripe"></div>
-
-<section id="schedule" class="sec" style="background:var(--y);">
-  <div class="container">
-    <p class="sec-label reveal">05 — SCHEDULE</p>
-    <h2 class="sec-title reveal">スケジュール</h2>
-    <div class="timeline" style="margin-top:3rem;">
-      <div class="tl-item active reveal">
-        <div class="tl-left"><div class="tl-date">2026.04.16</div></div>
-        <div class="tl-dot"></div>
-        <div class="tl-right"><div class="tl-title">エントリー受付開始</div><div class="tl-desc">Xアカウントでエントリー表明</div></div>
-      </div>
-      <div class="tl-item reveal">
-        <div class="tl-left"><div class="tl-date">2026.05.11</div></div>
-        <div class="tl-dot"></div>
-        <div class="tl-right"><div class="tl-title">動画提出締め切り</div><div class="tl-desc">45秒以内の新規撮影動画を提出</div></div>
-      </div>
-      <div class="tl-item reveal">
-        <div class="tl-left"><div class="tl-date">05.12 — 05.18</div></div>
-        <div class="tl-dot"></div>
-        <div class="tl-right"><div class="tl-title">審査期間</div><div class="tl-desc">審査員3名による総合評価</div></div>
-      </div>
-      <div class="tl-item reveal">
-        <div class="tl-left"><div class="tl-date">2026.05.19</div></div>
-        <div class="tl-dot"></div>
-        <div class="tl-right"><div class="tl-title">結果発表</div><div class="tl-desc">X・特設サイトにて発表</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="stripe"></div>
-
-<section id="entry" class="sec dark">
-  <div class="bg-text" style="bottom:5%;right:-3%;transform:rotate(3deg);font-size:clamp(80px,15vw,160px);color:rgba(255,230,0,0.03);">ENTRY</div>
-  <div class="container">
-    <p class="sec-label reveal">06 — ENTRY</p>
-    <h2 class="sec-title reveal">エントリー方法</h2>
-    <div class="entry-inner">
-      <div>
-        <ol class="steps">
-          <li class="step reveal">
-            <div class="step-n">01</div>
-            <div class="step-body"><strong>同意事項を確認する</strong><p>下記の同意事項をすべて確認し、内容に同意のうえエントリーしてください。</p></div>
-          </li>
-          <li class="step reveal">
-            <div class="step-n">02</div>
-            <div class="step-body"><strong>Xでエントリー表明する</strong><p>公式ハッシュタグをつけてXに投稿。投稿をもってエントリー完了。</p></div>
-          </li>
-          <li class="step reveal">
-            <div class="step-n">03</div>
-            <div class="step-body"><strong>動画を撮影・提出する</strong><p>本大会用に新規撮影した45秒以内の動画を締め切りまでに提出。</p></div>
-          </li>
-        </ol>
-        <a href="#" class="btn-cta reveal">X でエントリーする →</a>
-      </div>
-      <div class="agree-box reveal">
-        <div class="agree-title">AGREEMENT — 同意事項</div>
-        <ul class="agree-list">
-          <li>提出動画やハンドルネーム等の情報は、商用・非商用を問わず各種メディアで使用される場合があります。</li>
-          <li>有志によるPVや拾い動画への使用を含みます。</li>
-          <li>各種サイトのエラー・天災・関係者の事情等により、予告なくスケジュールや内容が変更される場合があります。</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-inner">
-    <div class="footer-logo">PENguin Creator's Spin 2026</div>
-    <ul class="footer-links">
-      <li><a href="https://jeb.penmawashi.com/events" target="_blank">JEB Events</a></li>
-      <li><a href="https://waza.penspinning.jp/2018/05/23/word/" target="_blank">語句解説</a></li>
-      <li><a href="#">お問い合わせ</a></li>
+  <div class="pr-content">
+    <nav class="pr-nav">
+      <a href="#overview">OVERVIEW</a>
+      <a href="#rules">RULES</a>
+      <a href="#entry">ENTRY</a>
+    </nav>
+    <ul class="pr-sections">
+      <li><a href="#overview"><div class="pr-item-left"><span class="pr-item-sec">SEC</span><span class="pr-item-num">01</span></div><span class="pr-item-lbl">大会概要</span></a></li>
+      <li><a href="#prize"><div class="pr-item-left"><span class="pr-item-sec">SEC</span><span class="pr-item-num">02</span></div><span class="pr-item-lbl">賞金</span></a></li>
+      <li><a href="#criteria"><div class="pr-item-left"><span class="pr-item-sec">SEC</span><span class="pr-item-num">03</span></div><span class="pr-item-lbl">評価基準</span></a></li>
+      <li><a href="#official-x"><div class="pr-item-left"><span class="pr-item-sec">SEC</span><span class="pr-item-num">04</span></div><span class="pr-item-lbl">公式X</span></a></li>
+      <li><a href="#rules"><div class="pr-item-left"><span class="pr-item-sec">SEC</span><span class="pr-item-num">05</span></div><span class="pr-item-lbl">募集要項</span></a></li>
+      <li><a href="#judges"><div class="pr-item-left"><span class="pr-item-sec">SEC</span><span class="pr-item-num">06</span></div><span class="pr-item-lbl">審査員</span></a></li>
+      <li><a href="#schedule"><div class="pr-item-left"><span class="pr-item-sec">SEC</span><span class="pr-item-num">07</span></div><span class="pr-item-lbl">スケジュール</span></a></li>
+      <li><a href="#entry"><div class="pr-item-left"><span class="pr-item-sec">SEC</span><span class="pr-item-num">08</span></div><span class="pr-item-lbl">エントリー</span></a></li>
     </ul>
   </div>
-  <p class="footer-copy">© 2026 PENguin Creator's Spin 運営チーム. All rights reserved.</p>
-</footer>
+</aside>
+
+<!-- ─── RIGHT STRIP (accent line) ─── -->
+<div class="strip strip-r"></div>
+
+<!-- ─── CENTER LEFT STRIP ─── -->
+<div class="strip-ci strip-ci-l">
+  <div class="strip-inner">
+    <span>PENguin Creator's Spin 2026  PEN SPINNING  CONTEST  JAPAN  ENTRY 4.16 </span>
+    <span>PENguin Creator's Spin 2026  PEN SPINNING  CONTEST  JAPAN  ENTRY 4.16 </span>
+  </div>
+</div>
+
+<!-- ─── CENTER RIGHT STRIP ─── -->
+<div class="strip-ci strip-ci-r">
+  <div class="strip-inner">
+    <span>PENguin Creator's Spin 2026  PEN SPINNING  CONTEST  JAPAN  DEADLINE 5.11 </span>
+    <span>PENguin Creator's Spin 2026  PEN SPINNING  CONTEST  JAPAN  DEADLINE 5.11 </span>
+  </div>
+</div>
+
+<!-- ─── MAIN ─── -->
+<main class="main">
+
+  <!-- ① BANNER IMAGE -->
+  <section id="banner" class="banner-img">
+    <div class="banner-img-bg">
+      <div class="banner-img-deco">PCS</div>
+    </div>
+    <div class="banner-img-center">
+      <div class="banner-img-placeholder-lbl">VISUAL IMAGE</div>
+    </div>
+    <div class="banner-img-overlay">
+      <div class="banner-img-date">2026.04.16 ENTRY START → 2026.05.11 DEADLINE</div>
+      <div class="banner-img-title">PENguin Creator's<br>Spin 2026</div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker dark">
+    <div class="ticker-track">
+      <span>FIRST PENGUIN · PEN SPINNING · CREATOR'S SPIN 2026 · JAPAN · ファーストペンギン · 賞金総額¥90,000 · @penguin_ai_jp · </span>
+      <span>FIRST PENGUIN · PEN SPINNING · CREATOR'S SPIN 2026 · JAPAN · ファーストペンギン · 賞金総額¥90,000 · @penguin_ai_jp · </span>
+    </div>
+  </div>
+
+  <!-- ② キャッチコピー -->
+  <section id="catch" class="catch">
+    <div class="catch-bg-txt">SPIN</div>
+    <div class="catch-eyebrow reveal stamp">2026.04.16 ENTRY → <em>2026.05.11 DEADLINE</em></div>
+    <h2 class="catch-heading char-heading reveal">
+      書く時代は終わった。<br>
+      <span class="ac">回す</span>時代だ。
+    </h2>
+    <p class="catch-body reveal fly-r">
+      ペン回しは「うまさ」だけじゃない。<br>
+      誰も見たことのない回し方、誰も試さなかった発想——<br>
+      テーマは<strong>「ファーストペンギン」</strong>。<br>
+      あなたが最初に飛び込む番だ。
+    </p>
+    <div class="catch-tags reveal pop">
+      <span class="catch-tag hl">動画コンテスト</span>
+      <span class="catch-tag">30秒以内</span>
+      <span class="catch-tag hl2">賞金総額 ¥90,000</span>
+      <span class="catch-tag">審査員3名</span>
+      <span class="catch-tag">X / YouTube / Instagram</span>
+    </div>
+  </section>
+
+  <div class="stripe"></div>
+
+  <!-- TICKER light -->
+  <div class="ticker yellow">
+    <div class="ticker-track">
+      <span>大会概要 · 賞金 · 評価基準 · 募集要項 · 審査員 · スケジュール · エントリー · OVERVIEW · PRIZE · CRITERIA · RULES · JUDGES · SCHEDULE · ENTRY · </span>
+      <span>大会概要 · 賞金 · 評価基準 · 募集要項 · 審査員 · スケジュール · エントリー · OVERVIEW · PRIZE · CRITERIA · RULES · JUDGES · SCHEDULE · ENTRY · </span>
+    </div>
+  </div>
+
+  <!-- ③ 大会概要 -->
+  <section id="overview" class="sec white">
+    <p class="sec-eyebrow reveal stamp">01 — OVERVIEW</p>
+    <h2 class="sec-heading char-heading reveal">大会概要</h2>
+    <div class="ov-grid reveal fly-l">
+      <div class="ov-card"><div class="ov-num">01</div><div class="ov-lbl">STYLE</div><div class="ov-val">動画コンテスト</div></div>
+      <div class="ov-card"><div class="ov-num">02</div><div class="ov-lbl">THEME</div><div class="ov-val">ファーストペンギン</div></div>
+      <div class="ov-card"><div class="ov-num">03</div><div class="ov-lbl">PRIZE</div><div class="ov-val">総額 ¥90,000</div></div>
+      <div class="ov-card"><div class="ov-num">04</div><div class="ov-lbl">LENGTH</div><div class="ov-val">30秒以内</div></div>
+      <div class="ov-card"><div class="ov-num">05</div><div class="ov-lbl">CRITERIA</div><div class="ov-val">難易度/独自性/安定感/構成力</div></div>
+      <div class="ov-card"><div class="ov-num">06</div><div class="ov-lbl">PLATFORM</div><div class="ov-val">X / YouTube / Instagram</div></div>
+    </div>
+  </section>
+
+  <div class="stripe cyan-stripe"></div>
+
+  <!-- 賞金 -->
+  <section id="prize" class="sec yellow">
+    <p class="sec-eyebrow reveal stamp">02 — PRIZE</p>
+    <h2 class="sec-heading char-heading reveal">賞金</h2>
+    <div class="prize-grid">
+      <div class="prize-card gold reveal zoom cont-border">
+        <div class="prize-rank">01</div>
+        <div>
+          <div class="prize-title">GRAND MASTER</div>
+          <div class="prize-amount cont-prize">¥50,000</div>
+        </div>
+      </div>
+      <div class="prize-card silver reveal zoom cont-border">
+        <div class="prize-rank">02</div>
+        <div>
+          <div class="prize-title">EXPERT</div>
+          <div class="prize-amount cont-prize">¥30,000</div>
+        </div>
+      </div>
+      <div class="prize-card bronze reveal zoom cont-border">
+        <div class="prize-rank">03</div>
+        <div>
+          <div class="prize-title">SPECIALIST</div>
+          <div class="prize-amount cont-prize">¥10,000</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stripe"></div>
+
+  <!-- 評価基準 -->
+  <section id="criteria" class="sec white">
+    <p class="sec-eyebrow reveal stamp">03 — CRITERIA</p>
+    <h2 class="sec-heading char-heading reveal">評価基準</h2>
+    <div class="crit-grid">
+      <div class="crit-item reveal zoom">
+        <div class="crit-num">01</div>
+        <div class="crit-name">難易度</div>
+        <div class="crit-desc">再現性が難しい技を使っているか</div>
+      </div>
+      <div class="crit-item reveal zoom">
+        <div class="crit-num">02</div>
+        <div class="crit-name">独自性</div>
+        <div class="crit-desc">他の誰にもいない表現を披露できるか</div>
+      </div>
+      <div class="crit-item reveal zoom">
+        <div class="crit-num">03</div>
+        <div class="crit-name">安定感</div>
+        <div class="crit-desc">ペンを落とさず安定して披露できているか</div>
+      </div>
+      <div class="crit-item reveal zoom">
+        <div class="crit-num">04</div>
+        <div class="crit-name">構成力</div>
+        <div class="crit-desc">同じ技に偏らず、様々な技を使えているか</div>
+      </div>
+    </div>
+    <div class="crit-minus reveal fly-l">
+      <div class="crit-minus-title">— 減点対象</div>
+      <ul class="crit-minus-list">
+        <li>意図のない指遣い・回転速度・回転軌道のブレ</li>
+        <li>極端に単調な構成（例：20秒間同じ技を繰り返す）</li>
+        <li>低画質・背景ノイズ等でペンや指の動きが見えにくい</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="stripe cyan-stripe"></div>
+
+  <!-- 公式X -->
+  <section id="official-x" class="sec yellow">
+    <p class="sec-eyebrow reveal stamp">04 — OFFICIAL X</p>
+    <h2 class="sec-heading char-heading reveal">公式X</h2>
+    <p style="font-size:0.85rem;color:rgba(0,0,0,0.6);margin-bottom:1.5rem;">最新情報・告知はこちらでチェック ↓</p>
+    <a href="https://x.com/PENguin_ainet" target="_blank" style="display:inline-flex;align-items:center;gap:0.6rem;background:var(--k);color:var(--y);font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.1em;padding:0.6rem 1.4rem;text-decoration:none;border:3px solid var(--k);box-shadow:4px 4px 0 var(--k);margin-bottom:1.8rem;transition:transform 0.12s;" class="reveal pop">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.264 5.633L18.244 2.25Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      @PENguin_ainet でフォロー
+    </a>
+    <div style="max-width:480px; border:3px solid var(--k); overflow:hidden; background:var(--w);">
+      <a class="twitter-timeline"
+         data-height="420"
+         data-theme="light"
+         data-chrome="noheader nofooter noborders"
+         href="https://twitter.com/PENguin_ainet">
+        <div style="padding:2rem;text-align:center;font-size:0.85rem;color:rgba(0,0,0,0.5);">X タイムラインを読み込み中…<br><a href="https://x.com/PENguin_ainet" target="_blank" style="color:var(--c);font-weight:700;">x.com/PENguin_ainet</a></div>
+      </a>
+    </div>
+  </section>
+
+  <div class="stripe"></div>
+
+  <!-- 募集要項 -->
+  <section id="rules" class="sec cyan">
+    <p class="sec-eyebrow reveal stamp">04 — RULES</p>
+    <h2 class="sec-heading char-heading reveal">募集要項</h2>
+    <div class="reveal fly-r">
+      <h3 class="rule-h3">① 参加資格</h3>
+      <div class="rule-item"><div class="rule-dot"></div><p>日本のペンスピナーであること</p></div>
+      <div class="rule-item"><div class="rule-dot"></div><p>日本文化に深い関わりがあり、日本語でのコミュニケーションが円滑に進められる方も参加OK</p></div>
+
+      <h3 class="rule-h3">② ペン</h3>
+      <div class="rule-item"><div class="rule-dot"></div><p><strong>棒状のものであればなんでもOK！</strong>何本使ってもOK。長さ・重さの制限なし</p></div>
+      <div class="rule-item"><div class="rule-dot"></div><p>ペンの選択も審査の評価対象になります</p></div>
+
+      <h3 class="rule-h3">③ 動画</h3>
+      <div class="rule-item"><div class="rule-dot"></div><p><strong>本大会用に撮り下ろした新規動画のみ。</strong>既出はNG</p></div>
+      <div class="rule-item"><div class="rule-dot"></div><p><strong>30秒以内</strong></p></div>
+      <div class="rule-item"><div class="rule-dot"></div><p>編集はトリミングと色調補正のみ。それ以外の編集は禁止</p></div>
+      <div class="rule-item"><div class="rule-dot"></div><p>審査員の環境で再生できない場合は再提出を求めることがあります</p></div>
+      <div class="caution"><p>期日までの対応がない場合や改善が見られない場合はその時点で失格となります。</p></div>
+    </div>
+  </section>
+
+  <div class="stripe"></div>
+
+  <!-- 審査員 -->
+  <section id="judges" class="sec white">
+    <p class="sec-eyebrow reveal stamp">05 — JUDGES</p>
+    <h2 class="sec-heading char-heading reveal">審査員</h2>
+    <div class="judges-grid">
+      <div class="judge-card reveal fly-l">
+        <div class="judge-avatar">K</div>
+        <div><div class="judge-name">KAY</div><div class="judge-role">PEN SPINNER</div></div>
+      </div>
+      <div class="judge-card reveal fly-r">
+        <div class="judge-avatar">？</div>
+        <div><div class="judge-name">TBA</div><div class="judge-role">TBA</div></div>
+      </div>
+      <div class="judge-card reveal fly-l">
+        <div class="judge-avatar">？</div>
+        <div><div class="judge-name">TBA</div><div class="judge-role">TBA</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stripe cyan-stripe"></div>
+
+  <!-- スケジュール -->
+  <section id="schedule" class="sec yellow">
+    <p class="sec-eyebrow reveal stamp">06 — SCHEDULE</p>
+    <h2 class="sec-heading char-heading reveal">スケジュール</h2>
+    <div class="tl-wrap">
+      <div class="tl-item active reveal fly-l">
+        <div class="tl-date">4.16</div>
+        <div class="tl-dot"></div>
+        <div class="tl-right"><div class="tl-title">エントリー受付開始</div><div class="tl-desc">X（Twitter）にてハッシュタグ付きで投稿</div></div>
+      </div>
+      <div class="tl-item reveal fly-r">
+        <div class="tl-date">5.11</div>
+        <div class="tl-dot"></div>
+        <div class="tl-right"><div class="tl-title">動画提出締め切り</div><div class="tl-desc">30秒以内の新規撮影動画を提出（約4週間）</div></div>
+      </div>
+      <div class="tl-item reveal fly-l">
+        <div class="tl-date">5.12–5.18</div>
+        <div class="tl-dot"></div>
+        <div class="tl-right"><div class="tl-title">審査期間</div><div class="tl-desc">審査員3名による総合評価（1週間）</div></div>
+      </div>
+      <div class="tl-item reveal fly-r">
+        <div class="tl-date">5.19</div>
+        <div class="tl-dot"></div>
+        <div class="tl-right"><div class="tl-title">結果発表</div><div class="tl-desc">X・特設サイトにて上位10名を発表</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stripe"></div>
+
+  <!-- エントリー -->
+  <section id="entry" class="sec white">
+    <p class="sec-eyebrow reveal stamp">07 — ENTRY</p>
+    <h2 class="sec-heading char-heading reveal">エントリー方法</h2>
+    <ol class="steps">
+      <li class="step reveal pop">
+        <div class="step-n">01</div>
+        <div class="step-body">
+          <strong>X（Twitter）に動画を投稿する</strong>
+          <p>指定ハッシュタグ <code style="background:var(--y);padding:0 0.3rem;font-size:0.85em;">#ハッシュタグ</code> を付け、エントリー名と共に動画をポスト。</p>
+        </div>
+      </li>
+      <li class="step reveal pop">
+        <div class="step-n">02</div>
+        <div class="step-body">
+          <strong>公式アカウントへDMを送る</strong>
+          <p>投稿URLと動画ダウンロードリンクを <strong style="background:var(--c);padding:0 0.3rem;">@penguin_ai_jp</strong> のDMへ送付。</p>
+        </div>
+      </li>
+      <li class="step reveal pop">
+        <div class="step-n">03</div>
+        <div class="step-body">
+          <strong>エントリー完了</strong>
+          <p>事務局からの返信をもってエントリー完了。※鍵付きアカウントは対象外。</p>
+        </div>
+      </li>
+    </ol>
+    <a href="https://twitter.com/penguin_ai_jp" target="_blank" class="btn-cta reveal pop cont-glow">X でエントリーする →</a>
+    <div class="agree-box reveal fly-l">
+      <div class="agree-title">AGREEMENT — 同意事項（エントリー時に同意したものとみなします）</div>
+      <ul class="agree-list">
+        <li>提出動画・ハンドルネーム等は、商用/非商用を問わず各種メディアで使用される場合があります。有志によるPV・拾い動画への使用を含みます。</li>
+        <li>各種サイトのエラー・天災・関係者の事情等により、予告なくスケジュールや内容が変更される場合があります。</li>
+        <li>投稿動画に使用する音楽や素材は、権利関係をクリアしているものに限ります。</li>
+        <li>全ての参加者は互いのクリエイティビティを尊重し、スポーツマンシップに則って行動すること。</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">PENguin Creator's Spin 2026</div>
+    <ul class="footer-links">
+      <li><a href="https://ps-japancup.mystrikingly.com/" target="_blank">Japan Cup 参考</a></li>
+      <li><a href="https://waza.penspinning.jp/2018/05/23/word/" target="_blank">語句解説</a></li>
+      <li><a href="mailto:info@penguin-ai.net">お問い合わせ</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 PENguin Creator's Spin 運営チーム. All rights reserved.</p>
+  </footer>
+
+</main>
 
 <script>
-const obs=new IntersectionObserver((entries)=>{
-  entries.forEach((e,i)=>{
-    if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}
+const mainEl = document.querySelector('.main');
+
+/* ── Per-character split ── */
+function splitIntoChars(el) {
+  const walk = (node, out) => {
+    if (node.nodeType === 3) {
+      [...node.textContent].forEach(ch => {
+        if (ch === '\n') { out.push(document.createElement('br')); return; }
+        const sp = document.createElement('span');
+        sp.className = 'char';
+        sp.textContent = ch;
+        out.push(sp);
+      });
+    } else {
+      const wrapper = node.cloneNode(false);
+      [...node.childNodes].forEach(child => {
+        const inner = [];
+        walk(child, inner);
+        inner.forEach(n => wrapper.appendChild(n));
+      });
+      out.push(wrapper);
+    }
+  };
+  const nodes = [...el.childNodes];
+  el.innerHTML = '';
+  nodes.forEach(node => {
+    const out = [];
+    walk(node, out);
+    out.forEach(n => el.appendChild(n));
   });
-},{threshold:0.1});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+}
+
+document.querySelectorAll('.char-heading').forEach(h => splitIntoChars(h));
+
+/* ── IntersectionObserver ── */
+const obs = new IntersectionObserver((entries) => {
+  // Sort by vertical position so stagger flows top-to-bottom
+  const visible = entries.filter(e => e.isIntersecting).sort((a, b) =>
+    a.target.getBoundingClientRect().top - b.target.getBoundingClientRect().top
+  );
+
+  visible.forEach((e, batchIdx) => {
+    const el = e.target;
+    const baseDelay = batchIdx * 90;
+
+    if (el.classList.contains('char-heading')) {
+      // Fire per-char animation
+      el.querySelectorAll('.char').forEach((ch, i) => {
+        ch.style.animationDelay = (baseDelay + i * 55) + 'ms';
+        ch.classList.add('go');
+      });
+      el.style.opacity = '1'; // reveal the container
+    } else {
+      el.style.animationDelay = baseDelay + 'ms';
+      el.classList.add('active');
+    }
+    obs.unobserve(el);
+  });
+}, { threshold: 0.08, root: mainEl });
+
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+/* ── Sidebar nav smooth scroll ── */
+document.querySelectorAll('.pr-nav a, .pr-sections a').forEach(a => {
+  a.addEventListener('click', e => {
+    const href = a.getAttribute('href');
+    if (href && href.startsWith('#')) {
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) mainEl.scrollTo({ top: target.offsetTop, behavior: 'smooth' });
+    }
+  });
+});
+
+/* ── Active nav highlight ── */
+mainEl.addEventListener('scroll', () => {
+  const ids = ['banner','catch','overview','prize','criteria','official-x','rules','judges','schedule','entry'];
+  let cur = '';
+  ids.forEach(id => { const el = document.getElementById(id); if (el && mainEl.scrollTop >= el.offsetTop - 120) cur = id; });
+  document.querySelectorAll('.pr-nav a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+});
 </script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
 </html>
