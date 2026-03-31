@@ -284,16 +284,26 @@ html, body { height: 100%; overflow: hidden; font-family: 'Noto Sans JP', sans-s
 .gallery-item:hover::after { background: rgba(0,0,0,0.35); }
 
 /* LIGHTBOX */
-.lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 9000; align-items: center; justify-content: center; padding: 2rem; }
-.lightbox.open { display: flex; }
-.lightbox-img { max-width: 100%; max-height: 90vh; object-fit: contain; border: 4px solid var(--w); display: block; }
-.lightbox-close { position: absolute; top: 1.2rem; right: 1.5rem; font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--w); cursor: pointer; line-height: 1; opacity: 0.7; transition: opacity 0.15s; }
-.lightbox-close:hover { opacity: 1; }
-.lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--w); cursor: pointer; opacity: 0.6; transition: opacity 0.15s; padding: 0 1rem; user-select: none; }
-.lightbox-nav:hover { opacity: 1; }
-.lightbox-prev { left: 0; }
-.lightbox-next { right: 0; }
-.lightbox-counter { position: absolute; bottom: 1.2rem; left: 50%; transform: translateX(-50%); font-family: 'Bebas Neue', sans-serif; font-size: 0.85rem; letter-spacing: 0.2em; color: rgba(255,255,255,0.5); }
+@keyframes lbFadeIn  { from { opacity:0; } to { opacity:1; } }
+@keyframes lbSlideIn { from { opacity:0; transform:scale(0.88); } to { opacity:1; transform:scale(1); } }
+.lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.88); z-index: 9000; align-items: center; justify-content: center; padding: 4rem 2rem 3.5rem; flex-direction: column; gap: 1rem; }
+.lightbox.open { display: flex; animation: lbFadeIn 0.22s ease forwards; }
+.lightbox-img { max-width: 100%; max-height: 72vh; object-fit: contain; display: block; animation: lbSlideIn 0.25s cubic-bezier(0.34,1.3,0.64,1) forwards; }
+.lightbox-close {
+  position: absolute; top: 1rem; left: 50%; transform: translateX(-50%);
+  display: flex; align-items: center; gap: 0.5rem;
+  background: var(--w); color: var(--k); border: 3px solid var(--k);
+  font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 0.15em;
+  padding: 0.35rem 1.4rem; cursor: pointer; box-shadow: 3px 3px 0 var(--y);
+  transition: transform 0.12s, box-shadow 0.12s;
+}
+.lightbox-close:hover { transform: translateX(-50%) translate(-2px,-2px); box-shadow: 5px 5px 0 var(--y); }
+.lightbox-close::before { content: '✕'; font-size: 0.9rem; }
+.lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.12); border: 2px solid rgba(255,255,255,0.3); font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--w); cursor: pointer; width: 48px; height: 64px; display: flex; align-items: center; justify-content: center; transition: background 0.15s; user-select: none; }
+.lightbox-nav:hover { background: rgba(255,255,255,0.28); }
+.lightbox-prev { left: 0.5rem; }
+.lightbox-next { right: 0.5rem; }
+.lightbox-counter { font-family: 'Bebas Neue', sans-serif; font-size: 0.78rem; letter-spacing: 0.25em; color: rgba(255,255,255,0.45); text-align: center; }
 
 /* APPLICANTS */
 .applicants-hashtag { display: inline-block; font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.06em; background: var(--k); color: var(--y); padding: 0.4rem 1.2rem; border: 3px solid var(--k); box-shadow: 4px 4px 0 var(--c); margin-bottom: 1.5rem; }
@@ -942,7 +952,7 @@ footer { background: var(--k); border-top: 4px solid var(--y); padding: 2rem 2.5
 
   <!-- ライトボックス -->
   <div class="lightbox" id="lightbox">
-    <div class="lightbox-close" id="lb-close">✕</div>
+    <div class="lightbox-close" id="lb-close">閉じる</div>
     <div class="lightbox-nav lightbox-prev" id="lb-prev">‹</div>
     <img class="lightbox-img" id="lb-img" src="" alt="">
     <div class="lightbox-nav lightbox-next" id="lb-next">›</div>
